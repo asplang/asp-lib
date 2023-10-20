@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-static AspRunResult remake_crc_spec(AspEngine *, AspDataEntry *, crc_spec *);
+static AspRunResult remake_crc_spec(AspEngine *, AspDataEntry *, crc_spec_t *);
 
 ASP_LIB_API AspRunResult AspLib_crc_make_spec
     (AspEngine *engine,
@@ -33,7 +33,7 @@ ASP_LIB_API AspRunResult AspLib_crc_make_spec
     bool refinValue = AspIsTrue(engine, refin);
     bool refoutValue = AspIsTrue(engine, refout);
 
-    crc_spec spec = crc_make_spec
+    crc_spec_t spec = crc_make_spec
         (widthValue, polyValue,
          initValue, refinValue, refoutValue, xoroutValue);
 
@@ -152,7 +152,7 @@ ASP_LIB_API AspRunResult AspLib_crc_make_spec
 }
 
 static AspRunResult remake_crc_spec
-    (AspEngine *engine, AspDataEntry *specTuple, crc_spec *spec)
+    (AspEngine *engine, AspDataEntry *specTuple, crc_spec_t *spec)
 {
     if (!AspIsTuple(specTuple))
         return AspRunResult_UnexpectedType;
@@ -242,14 +242,14 @@ ASP_LIB_API AspRunResult AspLib_crc_calc
 {
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    crc_spec spec;
+    crc_spec_t spec;
     AspRunResult remakeSpecResult = remake_crc_spec
         (engine, specTuple, &spec);
     if (remakeSpecResult != AspRunResult_OK)
         return remakeSpecResult;
 
     /* Calculate CRC. */
-    crc_session session;
+    crc_session_t session;
     crc_start(&spec, &session);
     char buffer[16];
     for (unsigned i = 0; i < AspCount(s); i += sizeof buffer)
@@ -258,7 +258,7 @@ ASP_LIB_API AspRunResult AspLib_crc_calc
         AspStringValue(engine, s, &size, buffer, i, sizeof buffer);
         crc_add(&spec, &session, buffer, (unsigned)size);
     }
-    crc_arg crcValue = crc_finish(&spec, &session);
+    crc_arg_t crcValue = crc_finish(&spec, &session);
 
     /* Return CRC value. */
     *returnValue = AspNewInteger(engine, *(int32_t *)&crcValue);
@@ -273,14 +273,14 @@ ASP_LIB_API AspRunResult AspLib_crc_start
      AspDataEntry *specTuple,
      AspDataEntry **returnValue)
 {
-    crc_spec spec;
+    crc_spec_t spec;
     AspRunResult remakeSpecResult = remake_crc_spec
         (engine, specTuple, &spec);
     if (remakeSpecResult != AspRunResult_OK)
         return remakeSpecResult;
 
     /* Create CRC session. */
-    crc_session session;
+    crc_session_t session;
     crc_start(&spec, &session);
 
     /* Return the session as a list. */
@@ -303,7 +303,7 @@ ASP_LIB_API AspRunResult AspLib_crc_add
 {
     if (!AspIsString(s) || !AspIsList(sessionList))
         return AspRunResult_UnexpectedType;
-    crc_spec spec;
+    crc_spec_t spec;
     AspRunResult remakeSpecResult = remake_crc_spec
         (engine, specTuple, &spec);
     if (remakeSpecResult != AspRunResult_OK)
@@ -313,7 +313,7 @@ ASP_LIB_API AspRunResult AspLib_crc_add
         return AspRunResult_UnexpectedType;
 
     /* Add to the CRC. */
-    crc_session session;
+    crc_session_t session;
     AspIntegerValue(crc, (int32_t *)&session.crc);
     char buffer[16];
     for (unsigned i = 0; i < AspCount(s); i += sizeof buffer)
@@ -345,7 +345,7 @@ ASP_LIB_API AspRunResult AspLib_crc_finish
 {
     if (!AspIsList(sessionList))
         return AspRunResult_UnexpectedType;
-    crc_spec spec;
+    crc_spec_t spec;
     AspRunResult remakeSpecResult = remake_crc_spec
         (engine, specTuple, &spec);
     if (remakeSpecResult != AspRunResult_OK)
@@ -355,9 +355,9 @@ ASP_LIB_API AspRunResult AspLib_crc_finish
         return AspRunResult_UnexpectedType;
 
     /* Finish CRC calculation. */
-    crc_session session;
+    crc_session_t session;
     AspIntegerValue(crc, (int32_t *)&session.crc);
-    crc_arg crcValue = crc_finish(&spec, &session);
+    crc_arg_t crcValue = crc_finish(&spec, &session);
 
     /* Return CRC value. */
     *returnValue = AspNewInteger(engine, *(int32_t *)&crcValue);
