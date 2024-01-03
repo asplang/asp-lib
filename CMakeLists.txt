@@ -23,8 +23,13 @@ option(BUILD_SHARED_LIBS
     "Enable/disable building of shared libraries"
     FALSE)
 
+# Debug options.
+option(ENABLE_DEBUG
+    "Enable/disable debug output"
+    FALSE)
+
 add_compile_definitions(
-    $<$<CONFIG:Debug>:ASP_DEBUG>
+    $<$<BOOL:${ENABLE_DEBUG}>:ASP_LIB_DEBUG>
     $<$<BOOL:${BUILD_SHARED_LIBS}>:USING_SHARED_LIBS>
     ASP_EXPORT_LIB_API
     )
@@ -43,10 +48,13 @@ link_directories(
     )
 
 if(WIN32)
-    add_compile_options(
-        /D_CRT_SECURE_NO_WARNINGS
-        /Zc:preprocessor
-    )
+    if(MSVC)
+        add_compile_options(/D_CRT_SECURE_NO_WARNINGS)
+        if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+            # Unsupported option when using clang-cl
+            add_compile_options(/Zc:preprocessor)
+        endif()
+    endif()
 endif()
 
 # Libraries.
