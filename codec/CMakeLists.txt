@@ -2,7 +2,7 @@
 # Asp codec library build specification.
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5)
 
 project(asp-codec
     VERSION 0.1.0.0
@@ -26,6 +26,12 @@ if(BUILD_FOR_TARGET)
         set_property(TARGET asp-codec
             PROPERTY C_VISIBILITY_PRESET hidden)
     endif()
+
+    target_compile_definitions(asp-codec PRIVATE
+        $<$<BOOL:${ENABLE_DEBUG}>:ASP_LIB_DEBUG>
+        $<$<BOOL:${BUILD_SHARED_LIBS}>:USING_SHARED_LIBS>
+        ASP_EXPORT_LIB_API
+        )
 
     install(TARGETS asp-codec)
 

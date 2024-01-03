@@ -2,7 +2,7 @@
 # Asp libraries top-level build specification.
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5)
 
 project(asplib
     VERSION 0.1.0.0)
@@ -28,12 +28,6 @@ option(BUILD_SHARED_LIBS
 option(ENABLE_DEBUG
     "Enable/disable debug output"
     FALSE)
-
-add_compile_definitions(
-    $<$<BOOL:${ENABLE_DEBUG}>:ASP_LIB_DEBUG>
-    $<$<BOOL:${BUILD_SHARED_LIBS}>:USING_SHARED_LIBS>
-    ASP_EXPORT_LIB_API
-    )
 
 include_directories(
     $<$<BOOL:${WIN32}>:${CMAKE_INSTALL_PREFIX}/../asp/include>
