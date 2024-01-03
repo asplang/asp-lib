@@ -34,7 +34,9 @@ if(BUILD_FOR_TARGET)
         ASP_EXPORT_LIB_API
         )
 
-    install(TARGETS asp-crc)
+    install(TARGETS asp-crc
+        DESTINATION lib
+        )
 
 endif()
 
