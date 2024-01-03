@@ -12,5 +12,4 @@ More information
 - E-mail: asplang@proton.me
 - Source respositories: https://bitbucket.org/asplang/
 - Online documentation: https://asplang.bitbucket.io/
-- License: See `LICENSE.txt` in the source respository
-  https://bitbucket.org/asplang/asp/
+- License: See `LICENSE.txt`.

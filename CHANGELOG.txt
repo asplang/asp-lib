@@ -1,0 +1,13 @@
+Asp libraries change log
+========================
+
+The following is a history of changes to the Asp libraries software, in reverse
+chronological order.
+
+Changes
+-------
+
+Version 0.1.0.0:
+- Initial release, with the following libraries:
+  - codec 0.1.0.0.
+  - crc 0.1.0.0.
