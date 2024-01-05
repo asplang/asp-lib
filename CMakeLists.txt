@@ -7,18 +7,9 @@ cmake_minimum_required(VERSION 3.5)
 project(asplib
     VERSION 0.1.0.0)
 
-option(BUILD_FOR_HOST
-    "Enable/disable building tools for the host environment"
+option(INSTALL_DEV
+    "Enable/disable installation of development files (e.g., headers)"
     FALSE)
-option(BUILD_FOR_TARGET
-    "Enable/disable building for the script engine target environment"
-    FALSE)
-
-# If no build options are chosen, build them all.
-if(NOT ${BUILD_FOR_HOST} AND NOT ${BUILD_FOR_TARGET})
-    set(BUILD_FOR_HOST TRUE)
-    set(BUILD_FOR_TARGET TRUE)
-endif()
 
 option(BUILD_SHARED_LIBS
     "Enable/disable building of shared libraries"

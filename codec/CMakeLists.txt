@@ -11,41 +11,48 @@ project(asp-codec
 
 set(ABI_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 
-if(BUILD_FOR_TARGET)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED True)
 
-    set(CMAKE_C_STANDARD 99)
-    set(CMAKE_C_STANDARD_REQUIRED True)
+add_library(asp-codec
+        lib-codec.c
+        )
 
-    add_library(asp-codec
-            lib-codec.c
-            )
-
+set_property(TARGET asp-codec
+    PROPERTY VERSION ${ABI_VERSION})
+if(BUILD_SHARED_LIBS)
     set_property(TARGET asp-codec
-        PROPERTY VERSION ${ABI_VERSION})
-    if(BUILD_SHARED_LIBS)
-        set_property(TARGET asp-codec
-            PROPERTY C_VISIBILITY_PRESET hidden)
-    endif()
-
-    target_compile_definitions(asp-codec PRIVATE
-        $<$<BOOL:${ENABLE_DEBUG}>:ASP_LIB_DEBUG>
-        $<$<BOOL:${BUILD_SHARED_LIBS}>:USING_SHARED_LIBS>
-        ASP_EXPORT_LIB_API
-        )
-
-    install(TARGETS asp-codec
-        DESTINATION lib
-        )
-
+        PROPERTY C_VISIBILITY_PRESET hidden)
 endif()
 
-if(BUILD_FOR_HOST)
+target_compile_definitions(asp-codec PRIVATE
+    $<$<BOOL:${ENABLE_DEBUG}>:ASP_LIB_DEBUG>
+    $<$<BOOL:${BUILD_SHARED_LIBS}>:USING_SHARED_LIBS>
+    ASP_EXPORT_LIB_API
+    )
+
+if(BUILD_SHARED_LIBS)
+    install(TARGETS asp-codec
+        DESTINATION lib
+        COMPONENT Runtime
+        )
+endif()
+
+if(INSTALL_DEV)
+
+    if(NOT BUILD_SHARED_LIBS)
+        install(TARGETS asp-codec
+            DESTINATION lib
+            COMPONENT Development
+            )
+    endif()
 
     if(WIN32)
 
         install(FILES
             codec.asps
             DESTINATION ${CMAKE_INSTALL_PREFIX}/../asp/include/asps
+            COMPONENT Development
             )
 
     else()
@@ -53,6 +60,7 @@ if(BUILD_FOR_HOST)
         install(FILES
             codec.asps
             DESTINATION include/asps
+            COMPONENT Development
             )
 
     endif()

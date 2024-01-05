@@ -7,6 +7,9 @@ chronological order.
 Changes
 -------
 
+Version 0.1.0.1:
+- Restructured build options and added CMake install components.
+
 Version 0.1.0.0:
 - Initial release, with the following libraries:
   - codec 0.1.0.0.
