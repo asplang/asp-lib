@@ -7,10 +7,14 @@ chronological order.
 Changes
 -------
 
+Version 0.2.0.0 (codec -> 0.2.0.0):
+- codec library.
+  - Added encode_str and decode_str routines for string fields.
+  - Added unsigned 8- and 16-bit encoding routines.
+  - Added range checking to all numeric encoding routines.
+
 Version 0.1.0.1:
 - Restructured build options and added CMake install components.
 
 Version 0.1.0.0:
-- Initial release, with the following libraries:
-  - codec 0.1.0.0.
-  - crc 0.1.0.0.
+- Initial release, with the following libraries: codec, crc.

@@ -3,6 +3,7 @@
  */
 
 #include <asp.h>
+#include <stdint.h>
 
 static AspRunResult encode_f32
     (AspEngine *,
@@ -43,9 +44,33 @@ ASP_LIB_API AspRunResult AspLib_encode_i8
     if (!AspIsInteger(x))
         return AspRunResult_UnexpectedType;
 
-    uint32_t value;
-    AspIntegerValue(x, (int32_t *)&value);
-    uint8_t byte = value & 0xFF;
+    int32_t sValue;
+    AspIntegerValue(x, &sValue);
+    if (sValue < INT8_MIN || sValue > INT8_MAX)
+        return AspRunResult_ValueOutOfRange;
+
+    uint32_t uValue = *(uint32_t *)&sValue;
+    uint8_t byte = uValue & 0xFF;
+    *returnValue = AspNewString(engine, (const char *)&byte, 1);
+
+    return AspRunResult_OK;
+}
+
+ASP_LIB_API AspRunResult AspLib_encode_u8
+    (AspEngine *engine,
+     AspDataEntry *x,
+     AspDataEntry **returnValue)
+{
+    if (!AspIsInteger(x))
+        return AspRunResult_UnexpectedType;
+
+    int32_t sValue;
+    AspIntegerValue(x, &sValue);
+    if (sValue < 0 || sValue > UINT8_MAX)
+        return AspRunResult_ValueOutOfRange;
+
+    uint32_t uValue = *(uint32_t *)&sValue;
+    uint8_t byte = uValue & 0xFF;
     *returnValue = AspNewString(engine, (const char *)&byte, 1);
 
     return AspRunResult_OK;
@@ -59,11 +84,15 @@ ASP_LIB_API AspRunResult AspLib_encode_i16be
     if (!AspIsInteger(x))
         return AspRunResult_UnexpectedType;
 
-    uint32_t value;
-    AspIntegerValue(x, (int32_t *)&value);
+    int32_t sValue;
+    AspIntegerValue(x, &sValue);
+    if (sValue < INT16_MIN || sValue > INT16_MAX)
+        return AspRunResult_ValueOutOfRange;
+
+    uint32_t uValue = *(uint32_t *)&sValue;
     uint8_t bytes[2];
-    bytes[0] = (value >> 8) & 0xFF;
-    bytes[1] = value & 0xFF;
+    bytes[0] = (uValue >> 8) & 0xFF;
+    bytes[1] = uValue & 0xFF;
     *returnValue = AspNewString(engine, (const char *)bytes, 2);
 
     return AspRunResult_OK;
@@ -77,11 +106,59 @@ ASP_LIB_API AspRunResult AspLib_encode_i16le
     if (!AspIsInteger(x))
         return AspRunResult_UnexpectedType;
 
-    uint32_t value;
-    AspIntegerValue(x, (int32_t *)&value);
+    int32_t sValue;
+    AspIntegerValue(x, &sValue);
+    if (sValue < INT16_MIN || sValue > INT16_MAX)
+        return AspRunResult_ValueOutOfRange;
+
+    uint32_t uValue = *(uint32_t *)&sValue;
     uint8_t bytes[2];
-    bytes[0] = value & 0xFF;
-    bytes[1] = (value >> 8) & 0xFF;
+    bytes[0] = uValue & 0xFF;
+    bytes[1] = (uValue >> 8) & 0xFF;
+    *returnValue = AspNewString(engine, (const char *)bytes, 2);
+
+    return AspRunResult_OK;
+}
+
+ASP_LIB_API AspRunResult AspLib_encode_u16be
+    (AspEngine *engine,
+     AspDataEntry *x,
+     AspDataEntry **returnValue)
+{
+    if (!AspIsInteger(x))
+        return AspRunResult_UnexpectedType;
+
+    int32_t sValue;
+    AspIntegerValue(x, &sValue);
+    if (sValue < 0 || sValue > UINT16_MAX)
+        return AspRunResult_ValueOutOfRange;
+
+    uint32_t uValue = *(uint32_t *)&sValue;
+    uint8_t bytes[2];
+    bytes[0] = (uValue >> 8) & 0xFF;
+    bytes[1] = uValue & 0xFF;
+    *returnValue = AspNewString(engine, (const char *)bytes, 2);
+
+    return AspRunResult_OK;
+}
+
+ASP_LIB_API AspRunResult AspLib_encode_u16le
+    (AspEngine *engine,
+     AspDataEntry *x,
+     AspDataEntry **returnValue)
+{
+    if (!AspIsInteger(x))
+        return AspRunResult_UnexpectedType;
+
+    int32_t sValue;
+    AspIntegerValue(x, &sValue);
+    if (sValue < 0 || sValue > UINT16_MAX)
+        return AspRunResult_ValueOutOfRange;
+
+    uint32_t uValue = *(uint32_t *)&sValue;
+    uint8_t bytes[2];
+    bytes[0] = uValue & 0xFF;
+    bytes[1] = (uValue >> 8) & 0xFF;
     *returnValue = AspNewString(engine, (const char *)bytes, 2);
 
     return AspRunResult_OK;
@@ -97,6 +174,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i32be
 
     uint32_t value;
     AspIntegerValue(x, (int32_t *)&value);
+
     uint8_t bytes[4];
     bytes[0] = (value >> 24) & 0xFF;
     bytes[1] = (value >> 16) & 0xFF;
@@ -117,6 +195,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i32le
 
     uint32_t value;
     AspIntegerValue(x, (int32_t *)&value);
+
     uint8_t bytes[4];
     bytes[0] = value & 0xFF;
     bytes[1] = (value >> 8) & 0xFF;
@@ -200,6 +279,36 @@ static AspRunResult encode_f64
         swap(bytes + 3, bytes + 4);
     }
     *returnValue = AspNewString(engine, (const char *)bytes, 8);
+
+    return AspRunResult_OK;
+}
+
+ASP_LIB_API AspRunResult AspLib_encode_str
+    (AspEngine *engine,
+     AspDataEntry *s, AspDataEntry *len, AspDataEntry *fill,
+     AspDataEntry **returnValue)
+{
+    if (!AspIsString(s) || !AspIsInteger(len) || !AspIsString(fill))
+        return AspRunResult_UnexpectedType;
+    if (AspCount(fill) != 1)
+        return AspRunResult_ValueOutOfRange;
+    int32_t signedLenValue;
+    AspIntegerValue(len, &signedLenValue);
+    if (signedLenValue < 0)
+        return AspRunResult_ValueOutOfRange;
+    unsigned lenValue = (unsigned)signedLenValue;
+    char fillChar = AspStringElement(engine, fill, 0);
+
+    *returnValue = AspNewString(engine, 0, 0);
+    for (unsigned i = 0; i < lenValue; i++)
+    {
+        char c = i < AspCount(s) ?
+            AspStringElement(engine, s, i) : fillChar;
+        bool appendResult = AspStringAppend
+            (engine, *returnValue, &c, 1);
+        if (!appendResult)
+            return AspRunResult_OutOfDataMemory;
+    }
 
     return AspRunResult_OK;
 }
@@ -396,6 +505,30 @@ ASP_LIB_API AspRunResult AspLib_decode_f64le
      AspDataEntry **returnValue)
 {
     return decode_f64(engine, s, be(), returnValue);
+}
+
+ASP_LIB_API AspRunResult AspLib_decode_str
+    (AspEngine *engine,
+     AspDataEntry *s,
+     AspDataEntry **returnValue)
+{
+    if (!AspIsString(s))
+        return AspRunResult_UnexpectedType;
+    int32_t signedLenValue;
+
+    *returnValue = AspNewString(engine, 0, 0);
+    for (unsigned i = 0; i < AspCount(s); i++)
+    {
+        char c = AspStringElement(engine, s, (int)i);
+        if (c == '\0')
+            break;
+        bool appendResult = AspStringAppend
+            (engine, *returnValue, &c, 1);
+        if (!appendResult)
+            return AspRunResult_OutOfDataMemory;
+    }
+
+    return AspRunResult_OK;
 }
 
 static AspRunResult decode_f64
