@@ -288,24 +288,32 @@ ASP_LIB_API AspRunResult AspLib_encode_str
      AspDataEntry *s, AspDataEntry *len, AspDataEntry *fill,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s) || !AspIsInteger(len) || !AspIsString(fill))
         return AspRunResult_UnexpectedType;
-    if (AspCount(fill) != 1)
+    int32_t fillSize;
+    result = AspCount(engine, fill, &fillSize);
+    if (result != AspRunResult_OK)
+        return result;
+    if (fillSize != 1)
         return AspRunResult_ValueOutOfRange;
     int32_t signedLenValue;
     AspIntegerValue(len, &signedLenValue);
     if (signedLenValue < 0)
         return AspRunResult_ValueOutOfRange;
-    unsigned lenValue = (unsigned)signedLenValue;
+    uint32_t lenValue = *(uint32_t *)&signedLenValue;
     char fillChar = AspStringElement(engine, fill, 0);
 
+    int32_t size;
+    result = AspCount(engine, s, &size);
+    if (result != AspRunResult_OK)
+        return result;
     *returnValue = AspNewString(engine, 0, 0);
-    for (unsigned i = 0; i < lenValue; i++)
+    for (uint32_t i = 0; i < lenValue; i++)
     {
-        char c = i < AspCount(s) ?
-            AspStringElement(engine, s, i) : fillChar;
-        bool appendResult = AspStringAppend
-            (engine, *returnValue, &c, 1);
+        char c = i < size ? AspStringElement(engine, s, i) : fillChar;
+        bool appendResult = AspStringAppend(engine, *returnValue, &c, 1);
         if (!appendResult)
             return AspRunResult_OutOfDataMemory;
     }
@@ -334,9 +342,15 @@ static AspRunResult decode_i8
      AspDataEntry *s, bool extendSign,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    if (AspCount(s) != 1)
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+    if (strSize != 1)
         return AspRunResult_ValueOutOfRange;
 
     uint8_t byte;
@@ -391,9 +405,15 @@ static AspRunResult decode_i16
      AspDataEntry *s, bool reverse, bool extendSign,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    if (AspCount(s) != 2)
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+    if (strSize != 2)
         return AspRunResult_ValueOutOfRange;
 
     uint8_t bytes[2];
@@ -434,9 +454,15 @@ static AspRunResult decode_i32
      AspDataEntry *s, bool reverse,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    if (AspCount(s) != 4)
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+    if (strSize != 4)
         return AspRunResult_ValueOutOfRange;
 
     uint8_t bytes[4];
@@ -473,9 +499,15 @@ static AspRunResult decode_f32
      AspDataEntry *s, bool reverse,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    if (AspCount(s) != 4)
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+    if (strSize != 4)
         return AspRunResult_ValueOutOfRange;
 
     uint8_t bytes[4];
@@ -512,14 +544,19 @@ ASP_LIB_API AspRunResult AspLib_decode_str
      AspDataEntry *s,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    int32_t signedLenValue;
 
+    int32_t size;
+    result = AspCount(engine, s, &size);
+    if (result != AspRunResult_OK)
+        return result;
     *returnValue = AspNewString(engine, 0, 0);
-    for (unsigned i = 0; i < AspCount(s); i++)
+    for (int32_t i = 0; i < size; i++)
     {
-        char c = AspStringElement(engine, s, (int)i);
+        char c = AspStringElement(engine, s, i);
         if (c == '\0')
             break;
         bool appendResult = AspStringAppend
@@ -536,9 +573,15 @@ static AspRunResult decode_f64
      AspDataEntry *s, bool reverse,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
-    if (AspCount(s) != 8)
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+    if (strSize != 8)
         return AspRunResult_ValueOutOfRange;
 
     uint8_t bytes[8];

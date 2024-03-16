@@ -240,6 +240,8 @@ ASP_LIB_API AspRunResult AspLib_crc_calc
      AspDataEntry *specTuple, AspDataEntry *s,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
     crc_spec_t spec;
@@ -248,14 +250,19 @@ ASP_LIB_API AspRunResult AspLib_crc_calc
     if (remakeSpecResult != AspRunResult_OK)
         return remakeSpecResult;
 
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+
     /* Calculate CRC. */
     crc_session_t session;
     crc_start(&spec, &session);
     char buffer[16];
-    for (unsigned i = 0; i < AspCount(s); i += sizeof buffer)
+    for (int32_t i = 0; i < strSize; i += (int32_t)sizeof buffer)
     {
         size_t size;
-        AspStringValue(engine, s, &size, buffer, i, sizeof buffer);
+        AspStringValue(engine, s, &size, buffer, (size_t)i, sizeof buffer);
         crc_add(&spec, &session, buffer, (unsigned)size);
     }
     crc_arg_t crcValue = crc_finish(&spec, &session);
@@ -301,6 +308,8 @@ ASP_LIB_API AspRunResult AspLib_crc_add
      AspDataEntry *specTuple, AspDataEntry *sessionList, AspDataEntry *s,
      AspDataEntry **returnValue)
 {
+    AspRunResult result = AspRunResult_OK;
+
     if (!AspIsString(s) || !AspIsList(sessionList))
         return AspRunResult_UnexpectedType;
     crc_spec_t spec;
@@ -312,14 +321,19 @@ ASP_LIB_API AspRunResult AspLib_crc_add
     if (crc == 0 || !AspIsInteger(crc))
         return AspRunResult_UnexpectedType;
 
+    int32_t strSize;
+    result = AspCount(engine, s, &strSize);
+    if (result != AspRunResult_OK)
+        return result;
+
     /* Add to the CRC. */
     crc_session_t session;
     AspIntegerValue(crc, (int32_t *)&session.crc);
     char buffer[16];
-    for (unsigned i = 0; i < AspCount(s); i += sizeof buffer)
+    for (int32_t i = 0; i < strSize; i += (int32_t)sizeof buffer)
     {
         size_t size;
-        AspStringValue(engine, s, &size, buffer, i, sizeof buffer);
+        AspStringValue(engine, s, &size, buffer, (size_t)i, sizeof buffer);
         crc_add(&spec, &session, buffer, (unsigned)size);
     }
 
