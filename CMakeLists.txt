@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(asplib
-    VERSION 0.2.0.0)
+    VERSION 0.2.1.0)
 
 option(INSTALL_DEV
     "Enable/disable installation of development files (e.g., headers)"

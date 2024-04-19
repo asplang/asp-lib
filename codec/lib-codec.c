@@ -293,9 +293,13 @@ ASP_LIB_API AspRunResult AspLib_encode_str
     if (!AspIsString(s) || !AspIsInteger(len) || !AspIsString(fill))
         return AspRunResult_UnexpectedType;
     int32_t fillSize;
+    #if ASP_VERSION < 0x01010000
+    fillSize = (int32_t)AspCount(fill);
+    #else
     result = AspCount(engine, fill, &fillSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     if (fillSize != 1)
         return AspRunResult_ValueOutOfRange;
     int32_t signedLenValue;
@@ -306,9 +310,13 @@ ASP_LIB_API AspRunResult AspLib_encode_str
     char fillChar = AspStringElement(engine, fill, 0);
 
     int32_t size;
+    #if ASP_VERSION < 0x01010000
+    size = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &size);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     *returnValue = AspNewString(engine, 0, 0);
     for (uint32_t i = 0; i < lenValue; i++)
     {
@@ -347,9 +355,13 @@ static AspRunResult decode_i8
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     if (strSize != 1)
         return AspRunResult_ValueOutOfRange;
 
@@ -410,9 +422,13 @@ static AspRunResult decode_i16
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     if (strSize != 2)
         return AspRunResult_ValueOutOfRange;
 
@@ -459,9 +475,13 @@ static AspRunResult decode_i32
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     if (strSize != 4)
         return AspRunResult_ValueOutOfRange;
 
@@ -504,9 +524,13 @@ static AspRunResult decode_f32
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     if (strSize != 4)
         return AspRunResult_ValueOutOfRange;
 
@@ -550,9 +574,13 @@ ASP_LIB_API AspRunResult AspLib_decode_str
         return AspRunResult_UnexpectedType;
 
     int32_t size;
+    #if ASP_VERSION < 0x01010000
+    size = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &size);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     *returnValue = AspNewString(engine, 0, 0);
     for (int32_t i = 0; i < size; i++)
     {
@@ -578,9 +606,13 @@ static AspRunResult decode_f64
     if (!AspIsString(s))
         return AspRunResult_UnexpectedType;
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
     if (strSize != 8)
         return AspRunResult_ValueOutOfRange;
 

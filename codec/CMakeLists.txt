@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(asp-codec
-    VERSION 0.2.0.0
+    VERSION 0.2.1.0
     LANGUAGES C
     )
 

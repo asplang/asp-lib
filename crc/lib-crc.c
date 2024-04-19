@@ -251,9 +251,13 @@ ASP_LIB_API AspRunResult AspLib_crc_calc
         return remakeSpecResult;
 
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
 
     /* Calculate CRC. */
     crc_session_t session;
@@ -322,9 +326,13 @@ ASP_LIB_API AspRunResult AspLib_crc_add
         return AspRunResult_UnexpectedType;
 
     int32_t strSize;
+    #if ASP_VERSION < 0x01010000
+    strSize = (int32_t)AspCount(s);
+    #else
     result = AspCount(engine, s, &strSize);
     if (result != AspRunResult_OK)
         return result;
+    #endif
 
     /* Add to the CRC. */
     crc_session_t session;
