@@ -10,6 +10,8 @@ More information
 
 - Web site: https://www.asplang.org/
 - E-mail: asplang@proton.me
-- Source respositories: https://bitbucket.org/asplang/
+- Source respositories:
+  - https://bitbucket.org/asplang/ (development)
+  - https://github.com/asplang/ (stable)
 - Online documentation: https://asplang.bitbucket.io/
 - License: See `LICENSE.txt`.
