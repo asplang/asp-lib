@@ -4,8 +4,10 @@
 
 cmake_minimum_required(VERSION 3.5)
 
+file(STRINGS version.txt VERSION)
+
 project(asp-crc
-    VERSION 0.1.1.0
+    VERSION ${VERSION}
     LANGUAGES C
     )
 
@@ -15,9 +17,9 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
 add_library(asp-crc
-        lib-crc.c
-        crc.c
-        )
+    lib-crc.c
+    crc.c
+    )
 
 set_property(TARGET asp-crc
     PROPERTY VERSION ${ABI_VERSION})
