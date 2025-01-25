@@ -1,0 +1,11 @@
+#
+# Asp test function specifications.
+#
+
+include sys
+include type
+include collect
+include iter
+
+include 'test-common'
+include sort

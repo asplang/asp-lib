@@ -7,6 +7,16 @@ chronological order.
 Changes
 -------
 
+Version 0.3.0.0 (sort -> 0.1.0.0):
+- Added a sort library with sort and sorted functions.
+  - Note that this library requires Asp version 1.2.3.0 (i.e., Asp engine
+    version 1.2.2.0) or later.
+- Added some common testing infrastructure, using it to build a test driver
+  for the sort library.
+- Separated top-level version and versions of individual libraries out of the
+  CMakeLists.txt files into separate text files where they can be maintained
+  independently from the build specs.
+
 Version 0.2.1.0 (codec -> 0.2.1.0, crc -> 0.1.1.0):
 - Made code involving calls to AspCount resilient to whatever version of Asp
   is installed. The signature of AspCount changed in version 1.1.

@@ -1,0 +1,19 @@
+#
+# Asp application function specifications - sort.
+#
+
+lib
+
+# Sort functions.
+#
+# sort(list, comp)
+# outlist = sorted(iterable, comp)
+# - list is a list to be sorted in place.
+# - iterable is any iterable object (e.g., string, range, list, set, etc.).
+# - comp is a comparison function that accepts two arguments and returns an
+#   integer value with the following meaning: a negative value if the first
+#   argument is less than the second, a positive value if the first argument is
+#   greater than the second, and zero if they are equal.
+# - outlist is a new sorted list.
+def sort(list, compare) = AspLib_sort
+def sorted(iterable, compare) = AspLib_sorted

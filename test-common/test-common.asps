@@ -1,0 +1,6 @@
+#
+# Asp common test application function specifications.
+#
+
+# General purpose print.
+def print(*values, sep = ' ', end = '\n') = AspTest_print

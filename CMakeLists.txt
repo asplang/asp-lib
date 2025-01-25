@@ -4,8 +4,10 @@
 
 cmake_minimum_required(VERSION 3.5)
 
+file(STRINGS version.txt VERSION)
+
 project(asplib
-    VERSION 0.2.1.0)
+    VERSION ${VERSION})
 
 option(INSTALL_DEV
     "Enable/disable installation of development files (e.g., headers)"
@@ -14,11 +16,26 @@ option(INSTALL_DEV
 option(BUILD_SHARED_LIBS
     "Enable/disable building of shared libraries"
     FALSE)
+option(BUILD_TEST_TARGETS
+    "Enable/disable building of tests"
+    FALSE)
 
-# Debug options.
+# Debug option.
 option(ENABLE_DEBUG
     "Enable/disable debug output"
     FALSE)
+
+if(WIN32)
+    set(PATH_NAME_SEPARATOR [[;]])
+    set(C_COMMAND_OPTION_PREFIXES [["-/"]])
+else()
+    set(PATH_NAME_SEPARATOR :)
+    set(C_COMMAND_OPTION_PREFIXES [["-"]])
+endif()
+
+if(ENABLE_DEBUG)
+    add_definitions(-DASP_DEBUG)
+endif()
 
 include_directories(
     $<$<BOOL:${WIN32}>:${CMAKE_INSTALL_PREFIX}/../asp/include>
@@ -43,6 +60,13 @@ if(WIN32)
     endif()
 endif()
 
+# Common test files.
+if(BUILD_TEST_TARGETS)
+    enable_testing()
+    add_subdirectory(test-common)
+endif()
+
 # Libraries.
 add_subdirectory(codec)
 add_subdirectory(crc)
+add_subdirectory(sort)

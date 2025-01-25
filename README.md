@@ -1,12 +1,10 @@
-Libraries for the Asp scripting platform
-========================================
+# Libraries for the Asp scripting platform
 
 This repository contains a collection of libraries and function specification
 files that may be included in the top-level function specification file for an
 application that uses the Asp scripting platform.
 
-More information
-----------------
+## More information
 
 - Web site: https://www.asplang.org/
 - E-mail: asplang@proton.me
