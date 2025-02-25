@@ -20,11 +20,18 @@ add_library(asp-codec
     lib-codec.c
     )
 
+if(ENABLE_DEBUG)
+    set_property(TARGET asp-codec
+        PROPERTY OUTPUT_NAME asp-codec-d
+        )
+endif()
 set_property(TARGET asp-codec
-    PROPERTY VERSION ${ABI_VERSION})
+    PROPERTY VERSION ${ABI_VERSION}
+    )
 if(BUILD_SHARED_LIBS)
     set_property(TARGET asp-codec
-        PROPERTY C_VISIBILITY_PRESET hidden)
+        PROPERTY C_VISIBILITY_PRESET hidden
+        )
 endif()
 
 target_compile_definitions(asp-codec PRIVATE

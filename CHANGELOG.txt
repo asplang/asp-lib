@@ -7,6 +7,10 @@ chronological order.
 Changes
 -------
 
+Version 0.3.0.1:
+- Added a "-d" suffix to the file names of debug versions of the libraries and
+  test executables.
+
 Version 0.3.0.0 (sort -> 0.1.0.0):
 - Added a sort library with sort and sorted functions.
   - Note that this library requires Asp version 1.2.3.0 (i.e., Asp engine

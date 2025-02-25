@@ -12,4 +12,4 @@ application that uses the Asp scripting platform.
   - https://bitbucket.org/asplang/ (development)
   - https://github.com/asplang/ (stable)
 - Online documentation: https://asplang.bitbucket.io/
-- License: See `LICENSE.txt`.
+- License: See the LICENSE.txt file.
