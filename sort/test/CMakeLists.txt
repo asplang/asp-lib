@@ -46,6 +46,12 @@ add_executable(test-sort
     ${test-common_SOURCE_DIR}/functions-print.cpp
     )
 
+if(ENABLE_DEBUG)
+    set_property(TARGET test-sort
+        PROPERTY OUTPUT_NAME test-sort-d
+        )
+endif()
+
 target_compile_definitions(test-sort PRIVATE
     ASP_TEST
     $<$<NOT:$<STREQUAL:${C_COMMAND_OPTION_PREFIXES},>>:
@@ -59,6 +65,5 @@ target_include_directories(test-sort PRIVATE
 
 target_link_libraries(test-sort
     asp-sort
-    aspe
     aspd
     )

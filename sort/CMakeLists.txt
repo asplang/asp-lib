@@ -21,11 +21,18 @@ add_library(asp-sort
     lib-sorted.c
     )
 
+if(ENABLE_DEBUG)
+    set_property(TARGET asp-sort
+        PROPERTY OUTPUT_NAME asp-sort-d
+        )
+endif()
 set_property(TARGET asp-sort
-    PROPERTY VERSION ${ABI_VERSION})
+    PROPERTY VERSION ${ABI_VERSION}
+    )
 if(BUILD_SHARED_LIBS)
     set_property(TARGET asp-sort
-        PROPERTY C_VISIBILITY_PRESET hidden)
+        PROPERTY C_VISIBILITY_PRESET hidden
+        )
 endif()
 
 target_compile_definitions(asp-sort PRIVATE

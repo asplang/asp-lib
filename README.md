@@ -10,4 +10,4 @@ application that uses the Asp scripting platform.
 - E-mail: asplang@proton.me
 - Source respositories: https://bitbucket.org/asplang/
 - Online documentation: https://asplang.bitbucket.io/
-- License: See `LICENSE.txt`.
+- License: See the LICENSE.txt file.

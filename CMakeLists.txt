@@ -42,9 +42,15 @@ include_directories(
     .
     )
 
-link_libraries(
-    aspe
-    )
+if(ENABLE_DEBUG)
+    link_libraries(
+        aspe-d
+        )
+else()
+    link_libraries(
+        aspe
+        )
+endif()
 
 link_directories(
     $<$<BOOL:${WIN32}>:${CMAKE_INSTALL_PREFIX}/../asp/lib>

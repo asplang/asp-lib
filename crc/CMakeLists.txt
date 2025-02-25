@@ -21,11 +21,18 @@ add_library(asp-crc
     crc.c
     )
 
+if(ENABLE_DEBUG)
+    set_property(TARGET asp-crc
+        PROPERTY OUTPUT_NAME asp-crc-d
+        )
+endif()
 set_property(TARGET asp-crc
-    PROPERTY VERSION ${ABI_VERSION})
+    PROPERTY VERSION ${ABI_VERSION}
+    )
 if(BUILD_SHARED_LIBS)
     set_property(TARGET asp-crc
-        PROPERTY C_VISIBILITY_PRESET hidden)
+        PROPERTY C_VISIBILITY_PRESET hidden
+        )
 endif()
 
 target_compile_definitions(asp-crc PRIVATE
