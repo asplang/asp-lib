@@ -7,6 +7,10 @@ chronological order.
 Changes
 -------
 
+Version 0.3.0.2: (crc -> 0.1.1.1)
+- Added more strict compile diagnostics when using the GNU toolset.
+- Made some minor fixes to the crc library to avoid warnings.
+
 Version 0.3.0.1:
 - Added a "-d" suffix to the file names of debug versions of the libraries and
   test executables.

@@ -22,7 +22,8 @@
 #define ACCESS(v) (v)
 #endif
 #define ASSIGN_N(_1, _2, _3, arg, ...) arg
-#define ASSIGN(...) ASSIGN_N(__VA_ARGS__, ASSIGN_PREFIX, ASSIGN_EQ)(__VA_ARGS__)
+#define ASSIGN(...) ASSIGN_N(__VA_ARGS__, ASSIGN_PREFIX, ASSIGN_EQ, ) \
+    (__VA_ARGS__)
 
 static crc_arg_t reflect(crc_arg_t value, unsigned bit_count);
 
@@ -40,11 +41,17 @@ void crc_init_spec
     spec->refin = refin;
     spec->refout = refout;
     ASSIGN(spec->xorout, xorout);
+    #ifdef CRC_SUPPORT_64
     ASSIGN(spec->mask,
         width == 64 ? (uint64_t)(int64_t)(-1) :
         width > 32 ? ((uint64_t)1U << width) - 1U :
         width == 32 ? (uint32_t)(int32_t)(-1) :
         ((uint32_t)1U << width) - 1U);
+    #else
+    ASSIGN(spec->mask,
+        width == 32 ? (uint32_t)(int32_t)(-1) :
+        ((uint32_t)1U << width) - 1U);
+    #endif
 
     /* For widths less than 1 byte, shift things to the left so that the
        action happens at the byte's MSb. The final answer will be shifted
@@ -60,10 +67,12 @@ void crc_init_spec
 
     /* Initialize tables. */
     crc_arg_t top_bit_mask = (crc_arg_t)1U << (spec->width - 1);
-    for (unsigned b = 0; b < 0x100; b++)
+    for (unsigned ub = 0; ub < 0x100; ub++)
     {
+        uint8_t b = (uint8_t)ub;
+
         /* Reflect the byte for use here and during calculation. */
-        uint8_t ref_b = reflect(b, 8);
+        uint8_t ref_b = (uint8_t)reflect(b, 8);
 
         /* Determine CRC contribution for the byte. */
         crc_arg_t crc = 0;
@@ -81,7 +90,7 @@ void crc_init_spec
         }
 
         /* Initialize the applicable table entries. */
-        unsigned crc_index = refin ? ref_b : b;
+        uint8_t crc_index = refin ? ref_b : b;
         spec->byte_table[b] = crc_index;
         ASSIGN(spec->crc_table[crc_index], crc & ACCESS(spec->mask));
     }
@@ -119,7 +128,8 @@ void crc_add
     while (size--)
     {
         uint8_t b = spec->byte_table[*bp++];
-        uint8_t index = b ^ (ACCESS(session->crc) >> (spec->width - 8));
+        uint8_t index = (uint8_t)
+            (b ^ (ACCESS(session->crc) >> (spec->width - 8)));
         ASSIGN(session->crc,
             (ACCESS(session->crc) << 8) ^ ACCESS(spec->crc_table[index]));
     }

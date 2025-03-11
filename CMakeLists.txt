@@ -56,14 +56,20 @@ link_directories(
     $<$<BOOL:${WIN32}>:${CMAKE_INSTALL_PREFIX}/../asp/lib>
     )
 
-if(WIN32)
-    if(MSVC)
-        add_compile_options(/D_CRT_SECURE_NO_WARNINGS)
-        if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-            # Unsupported option when using clang-cl
-            add_compile_options(/Zc:preprocessor)
-        endif()
-    endif()
+# Compile options.
+if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+    add_compile_options(
+    -pedantic -Werror
+    -Wno-parenthese -Wno-switch
+    -Wwrite-strings -Wpointer-arith
+    )
+endif()
+if(WIN32 AND MSVC)
+    add_compile_options(/D_CRT_SECURE_NO_WARNINGS)
+endif()
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    # Unsupported option when using clang-cl
+    add_compile_options(/Zc:preprocessor /wd4554)
 endif()
 
 # Common test files.

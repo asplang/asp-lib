@@ -27,9 +27,9 @@ ASP_LIB_API AspRunResult AspLib_crc_make_spec
         return AspRunResult_ValueOutOfRange;
     uint8_t widthValue = (uint8_t)*(uint32_t *)&signedWidthValue;
     uint32_t polyValue, initValue, xoroutValue;
-    AspIntegerValue(poly, (uint32_t *)&polyValue);
-    AspIntegerValue(init, (uint32_t *)&initValue);
-    AspIntegerValue(xorout, (uint32_t *)&xoroutValue);
+    AspIntegerValue(poly, (int32_t *)&polyValue);
+    AspIntegerValue(init, (int32_t *)&initValue);
+    AspIntegerValue(xorout, (int32_t *)&xoroutValue);
     bool refinValue = AspIsTrue(engine, refin);
     bool refoutValue = AspIsTrue(engine, refout);
 
