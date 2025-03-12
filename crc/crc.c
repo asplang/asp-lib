@@ -13,7 +13,8 @@
 #ifdef CRC_SUPPORT_64
 #define ASSIGN_EQ(lhs, rhs) \
     {if (spec->width > 32) {(lhs)._64 = (rhs);} else {(lhs)._32 = (rhs);}}
-#define ASSIGN_PREFIX(lhs, prefix, rhs) {if (spec->width > 32) \
+#define ASSIGN_PREFIX(lhs, prefix, rhs) \
+    {if (spec->width > 32) \
     {(lhs)._64 prefix ## = (rhs);} else {(lhs)._32 prefix ## = (rhs);}}
 #define ACCESS(v) (spec->width > 32 ? (v)._64 : (v)._32)
 #else
@@ -22,8 +23,8 @@
 #define ACCESS(v) (v)
 #endif
 #define ASSIGN_N(_1, _2, _3, arg, ...) arg
-#define ASSIGN(...) ASSIGN_N(__VA_ARGS__, ASSIGN_PREFIX, ASSIGN_EQ, ) \
-    (__VA_ARGS__)
+#define ASSIGN(...) \
+    ASSIGN_N(__VA_ARGS__, ASSIGN_PREFIX, ASSIGN_EQ, )(__VA_ARGS__)
 
 static crc_arg_t reflect(crc_arg_t value, unsigned bit_count);
 
