@@ -82,3 +82,8 @@ endif()
 add_subdirectory(codec)
 add_subdirectory(crc)
 add_subdirectory(sort)
+add_subdirectory(string)
+
+if(BUILD_TEST_TARGETS)
+    add_subdirectory(test)
+endif()

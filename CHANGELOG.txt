@@ -7,6 +7,12 @@ chronological order.
 Changes
 -------
 
+Version 0.4.0.0: (string -> 0.1.0.0)
+- Added a string library that includes:
+  - String character classification functions.
+  - Functions modeled on Python's string methods.
+- Added a top-level test project that imports all library modules.
+
 Version 0.3.0.2: (crc -> 0.1.1.1)
 - Added more strict compile diagnostics when using the GNU toolset.
 - Made some minor fixes to the crc library to avoid warnings.

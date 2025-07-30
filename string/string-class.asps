@@ -1,0 +1,34 @@
+#
+# Asp application function specifications - string classification.
+#
+# These functions are based on a combination of Python's string methods and C's
+# character classification functions. Python string methods that distinguish
+# characters based on Unicode are not represented here because Asp supports
+# only simple 8-bit characters.
+#
+
+lib
+
+# Return True if all characters in the given string are in the implied
+# classification and the string is not empty, False otherwise.
+def isalnum(str) = AspLib_isalnum
+def isalpha(str) = AspLib_isalpha
+def isblank(str) = AspLib_isblank
+def iscntrl(str) = AspLib_iscntrl
+def isdigit(str) = AspLib_isdigit
+def isgraph(str) = AspLib_isgraph
+def islower(str) = AspLib_islower
+def ispunct(str) = AspLib_ispunct
+def isspace(str) = AspLib_isspace
+def isupper(str) = AspLib_isupper
+def isxdigit(str) = AspLib_isxdigit
+
+# Return True if all characters in the given string are in the implied
+# classification or the given string is empty, False otherwise.
+def isascii(str) = AspLib_isascii
+def isprintable(str) = AspLib_isprintable
+
+# Return a copy of the string with all cased characters converted to the
+# implied case.
+def lower(str) = AspLib_lower
+def upper(str) = AspLib_upper

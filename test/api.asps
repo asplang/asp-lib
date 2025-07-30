@@ -1,0 +1,15 @@
+#
+# Asp library test function specifications.
+#
+
+include sys
+include type
+include collect
+include iter
+
+include 'test-common'
+
+import codec
+import crc
+import sort
+import 'string-class' as string_class
