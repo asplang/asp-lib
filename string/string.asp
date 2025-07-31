@@ -20,6 +20,15 @@ def center(str, width, fillchar = ' '):
         str = left_fill_len * fillchar + str + right_fill_len * fillchar
     return str
 
+def checktrans(table):
+    if type(table) != type({:}):
+        return False
+    for key, value in table:
+        if type(key) != type('') or len(key) != 1 or \
+            value is not None and type(value) != type(''):
+            return False
+    return True
+
 def count(str, sub):
     str_len = len(str)
     sub_len = len(sub)
@@ -120,6 +129,28 @@ def lstrip(str, chars = None):
             break
         i += 1
     return str[i..]
+
+def maketrans(*args):
+    args_len = len(args)
+    assert args_len >= 1 and args_len <= 3
+    if args_len == 1:
+        table = args[0]
+        assert checktrans(table)
+    else:
+        keys, values = args[..2]
+        assert type(keys) == type('') and type(values) == type('')
+        map_len = len(keys)
+        assert len(values) == map_len
+        table = {:}
+        vi = iter(values)
+        for key in keys:
+            table <- key : next(vi)
+        if args_len >= 3:
+            keys = args[2]
+            assert type(keys) == type('')
+            for key in keys:
+                table <- key : None
+    return table
 
 def partition(str, sep):
     pos = find(str, sep)
@@ -242,6 +273,18 @@ def strip(str, chars = None):
     result = ''
     for c in str:
         if not (isspace(c) if chars is None else c in chars):
+            result += c
+    return result
+
+def translate(str, table):
+    assert type(str) == type('') and checktrans(table)
+    result = ''
+    for c in str:
+        if c in table:
+            value = table[c]
+            if value is not None:
+                result += value
+        else:
             result += c
     return result
 
