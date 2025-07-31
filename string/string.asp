@@ -206,6 +206,24 @@ def rpartition(str, sep):
     return ('', '', str) if pos == -1 \
         else (str[.. pos], sep, str[pos + len(sep) ..])
 
+def rsplit(str, sep = None, maxsplit = -1):
+    assert \
+        type(str) == type('') and \
+        (sep is None or type(sep) == type('') and len(sep) > 0) and \
+        type(maxsplit) == type(0)
+    if maxsplit <= 0:
+        return split(str, sep, maxsplit)
+    def rev(s):
+        result = ''
+        for c in reversed(s):
+            result += c
+        return result
+    rev_result = split(rev(str), None if sep is None else rev(sep), maxsplit)
+    result = []
+    for rev_word in reversed(rev_result):
+        result <- rev(rev_word)
+    return result
+
 def rstrip(str, chars = None):
     assert \
         type(str) == type('') and \
@@ -217,20 +235,26 @@ def rstrip(str, chars = None):
         i -= 1
     return str[..i]
 
-def split(str, sep = None):
+def split(str, sep = None, maxsplit = -1):
     assert \
         type(str) == type('') and \
-        sep is None or type(sep) == type('') and len(sep) > 0
+        (sep is None or type(sep) == type('') and len(sep) > 0) and \
+        type(maxsplit) == type(0)
     result = []
     word = ''
     if sep is None:
+        si = 0
         for c in str:
             if isspace(c):
                 if word:
                     result <- word
                     word = ''
             else:
+                if maxsplit >= 0 and len(result) >= maxsplit:
+                    word += str[si..]
+                    break
                 word += c
+            si += 1
         if word:
             result <- word
     else:
@@ -245,6 +269,9 @@ def split(str, sep = None):
                 word = ''
                 i += sep_len
             else:
+                if maxsplit >= 0 and len(result) >= maxsplit:
+                    match = False
+                    break
                 word += str[i]
                 i += 1
         if not match:
