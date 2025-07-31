@@ -75,6 +75,7 @@ def expandtabs(str, tabsize = 8):
     return result
 
 def find(str, sub):
+    assert type(str) == type('') and type(sub) == type('')
     str_len = len(str)
     sub_len = len(sub)
     if sub_len > str_len:
@@ -111,14 +112,20 @@ def ljust(str, width, fillchar = ' '):
     return str
 
 def lstrip(str, chars = None):
-    assert type(str) == type('')
-    assert chars is None or type(chars) == type('')
+    assert \
+        type(str) == type('') and \
+        (chars is None or type(chars) == type(''))
     i = 0;
     for c in str:
         if not (isspace(c) if chars is None else c in chars):
             break
         i += 1
     return str[i..]
+
+def partition(str, sep):
+    pos = find(str, sep)
+    return (str, '', '') if pos == -1 \
+        else (str[.. pos], sep, str[pos + len(sep) ..])
 
 def removeprefix(str, prefix):
     return str[len(prefix) ..] if startswith(str, prefix) else str
@@ -127,8 +134,9 @@ def removesuffix(str, suffix):
     return str[.. -len(suffix)] if endswith(str, suffix) else str
 
 def replace(str, old, new):
-    assert type(str) == type('')
-    assert type(old) == type('') and type(new) == type('')
+    assert \
+        type(str) == type('') and \
+        type(old) == type('') and type(new) == type('')
     result = ''
     while True:
         pos = find(str, old)
@@ -139,6 +147,7 @@ def replace(str, old, new):
         str = str[pos + len(old) ..]
 
 def rfind(str, sub):
+    assert type(str) == type('') and type(sub) == type('')
     str_len = len(str)
     sub_len = len(sub)
     if sub_len > str_len:
@@ -161,9 +170,15 @@ def rjust(str, width, fillchar = ' '):
         str = fillchar + str
     return str
 
+def rpartition(str, sep):
+    pos = rfind(str, sep)
+    return ('', '', str) if pos == -1 \
+        else (str[.. pos], sep, str[pos + len(sep) ..])
+
 def rstrip(str, chars = None):
-    assert type(str) == type('')
-    assert chars is None or type(chars) == type('')
+    assert \
+        type(str) == type('') and \
+        (chars is None or type(chars) == type(''))
     i = len(str);
     for c in reversed(str):
         if not (isspace(c) if chars is None else c in chars):
@@ -172,8 +187,9 @@ def rstrip(str, chars = None):
     return str[..i]
 
 def split(str, sep = None):
-    assert type(str) == type('')
-    assert sep is None or (type(sep) == type('') and len(sep) > 0)
+    assert \
+        type(str) == type('') and \
+        sep is None or type(sep) == type('') and len(sep) > 0
     result = []
     word = ''
     if sep is None:
@@ -220,10 +236,22 @@ def startswith(str, prefix):
         return False
 
 def strip(str, chars = None):
-    assert type(str) == type('')
-    assert chars is None or type(chars) == type('')
+    assert \
+        type(str) == type('') and \
+        (chars is None or type(chars) == type(''))
     result = ''
     for c in str:
         if not (isspace(c) if chars is None else c in chars):
             result += c
     return result
+
+def zfill(str, width):
+    assert type(str) == type('') and type(width) == type(0)
+    str_len = len(str)
+    fill_len = width - str_len
+    if fill_len <= 0:
+        return str
+    prefixed = str_len > 0 and str[0] in '+-'
+    prefix = str[.. prefixed]
+    suffix = str[prefixed ..]
+    return prefix + fill_len * '0' + suffix
