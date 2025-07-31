@@ -11,15 +11,13 @@ from string_class import *
 
 def center(str, width, fillchar = ' '):
     assert \
-        type(str) == type('') and type(fillchar) == type('') and \
-        len(fillchar) == 1
-    left = True
-    while len(str) < width:
-        if left:
-            str = fillchar + str
-        else:
-            str += fillchar
-        left = not left
+        type(str) == type('') and type(width) == type(0) and \
+        type(fillchar) == type('') and len(fillchar) == 1
+    str_len = len(str)
+    right_fill_len = (width - str_len) // 2
+    if right_fill_len >= 0:
+        left_fill_len = width - str_len - right_fill_len
+        str = left_fill_len * fillchar + str + right_fill_len * fillchar
     return str
 
 def count(str, sub):
@@ -105,10 +103,11 @@ def join(iterable, sep = ''):
 
 def ljust(str, width, fillchar = ' '):
     assert \
-        type(str) == type('') and type(fillchar) == type('') and \
-        len(fillchar) == 1
-    while len(str) < width:
-        str += fillchar
+        type(str) == type('') and type(width) == type(0) and \
+        type(fillchar) == type('') and len(fillchar) == 1
+    fill_len = width - len(str)
+    if fill_len > 0:
+        str += fill_len * fillchar
     return str
 
 def lstrip(str, chars = None):
@@ -164,10 +163,11 @@ def rfind(str, sub):
 
 def rjust(str, width, fillchar = ' '):
     assert \
-        type(str) == type('') and type(fillchar) == type('') and \
-        len(fillchar) == 1
-    while len(str) < width:
-        str = fillchar + str
+        type(str) == type('') and type(width) == type(0) and \
+        type(fillchar) == type('') and len(fillchar) == 1
+    fill_len = width - len(str)
+    if fill_len > 0:
+        str = fill_len * fillchar + str
     return str
 
 def rpartition(str, sep):
