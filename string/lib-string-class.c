@@ -160,11 +160,6 @@ static int is_ascii(int c)
     return (c & 0x7F) == c;
 }
 
-/*
-lower - Return a copy of the string with all uppercase chars converted to lower.
-upper - Return a copy of the string with all lowercase chars converted to upper.
-*/
-
 ASP_LIB_API AspRunResult AspLib_lower
     (AspEngine *engine,
      AspDataEntry *str,
