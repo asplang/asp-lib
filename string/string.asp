@@ -286,8 +286,8 @@ def splitlines(str, keepends = False, ends = None):
     if ends is None:
         ends = ( \
             '\r\n', \   # ASCII CR+LF Carriage Return + Line Feed (DOS/Windows)
-            '\r', \     # ASCII CR Carriage Return (Old Macintosh)
             '\n', \     # ASCII LF Line Feed (Unix/Linux)
+            '\r', \     # ASCII CR Carriage Return (Old Macintosh)
             '\v', \     # ASCII VT Vertical Tabulation
             '\f', \     # ASCII FF Form Feed
             '\x1c', \   # ASCII FS File Separator
