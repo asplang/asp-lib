@@ -280,6 +280,50 @@ def split(str, sep = None, maxsplit = -1):
             result <- word
     return result
 
+def splitlines(str, keepends = False, ends = None):
+    assert type(str) == type('')
+    keepends = not not keepends
+    if ends is None:
+        ends = ( \
+            '\r\n', \   # ASCII CR+LF Carriage Return + Line Feed (DOS/Windows)
+            '\r', \     # ASCII CR Carriage Return (Old Macintosh)
+            '\n', \     # ASCII LF Line Feed (Unix/Linux)
+            '\v', \     # ASCII VT Vertical Tabulation
+            '\f', \     # ASCII FF Form Feed
+            '\x1c', \   # ASCII FS File Separator
+            '\x1d', \   # ASCII GS Group Separator
+            '\x1e', \   # ASCII RS Record Separator
+            '\x85', \   # ISO/IEC 6429 C1 Control Code NEL Next Line
+            )
+    for end in ends:
+        assert type(end) == type('')
+    str_len = len(str)
+    result = []
+    word = ''
+    match = False
+    i = 0
+    while i <= str_len - 1:
+        match = False
+        for end in ends:
+            end_len = len(end)
+            if str[i .. i + end_len] == end:
+                match = True
+                break
+        if match:
+            if keepends:
+                word += end
+            result <- word
+            word = ''
+            i += end_len
+        else:
+            word += str[i]
+            i += 1
+    if not match:
+        word += str[i..]
+    if word:
+        result <- word
+    return result
+
 def startswith(str, prefix):
     assert type(str) == type('')
     prefix_len = len(prefix)
