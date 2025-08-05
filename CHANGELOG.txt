@@ -7,6 +7,16 @@ chronological order.
 Changes
 -------
 
+Version 0.5.0.0: (codec -> 0.2.2.0, crc -> 0.2.0.0, string -> 0.1.1.0)
+- codec and string libraries:
+  - Added a prefixes to the C implementation function names to ensure they are
+    unique within the application.
+- crc library:
+  - Changed the names of the script-callable functions to remove the "crc_"
+    prefix, assuming application developers will import the specification
+    rather than including it. The old specification with the "crc_" prefixes is
+    still available as crc-prefixed.asps.
+
 Version 0.4.0.0: (string -> 0.1.0.0)
 - Added a string library that includes:
   - String character classification functions.
@@ -36,7 +46,7 @@ Version 0.2.1.0 (codec -> 0.2.1.0, crc -> 0.1.1.0):
   is installed. The signature of AspCount changed in version 1.1.
 
 Version 0.2.0.0 (codec -> 0.2.0.0):
-- codec library.
+- codec library:
   - Added encode_str and decode_str routines for string fields.
   - Added unsigned 8- and 16-bit encoding routines.
   - Added range checking to all numeric encoding routines.

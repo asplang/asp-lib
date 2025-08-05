@@ -15,7 +15,7 @@ static AspRunResult convert
      int (*convert_func)(int),
      AspDataEntry **returnValue);
 
-ASP_LIB_API AspRunResult AspLib_isalnum
+ASP_LIB_API AspRunResult AspLib_string_isalnum
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -23,7 +23,7 @@ ASP_LIB_API AspRunResult AspLib_isalnum
     return is_in_class(engine, str, isalnum, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isalpha
+ASP_LIB_API AspRunResult AspLib_string_isalpha
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -31,7 +31,7 @@ ASP_LIB_API AspRunResult AspLib_isalpha
     return is_in_class(engine, str, isalpha, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isascii
+ASP_LIB_API AspRunResult AspLib_string_isascii
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -39,7 +39,7 @@ ASP_LIB_API AspRunResult AspLib_isascii
     return is_in_class(engine, str, is_ascii, true, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isblank
+ASP_LIB_API AspRunResult AspLib_string_isblank
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -47,7 +47,7 @@ ASP_LIB_API AspRunResult AspLib_isblank
     return is_in_class(engine, str, isblank, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_iscntrl
+ASP_LIB_API AspRunResult AspLib_string_iscntrl
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -55,7 +55,7 @@ ASP_LIB_API AspRunResult AspLib_iscntrl
     return is_in_class(engine, str, iscntrl, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isdigit
+ASP_LIB_API AspRunResult AspLib_string_isdigit
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -63,7 +63,7 @@ ASP_LIB_API AspRunResult AspLib_isdigit
     return is_in_class(engine, str, isdigit, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isgraph
+ASP_LIB_API AspRunResult AspLib_string_isgraph
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -71,7 +71,7 @@ ASP_LIB_API AspRunResult AspLib_isgraph
     return is_in_class(engine, str, isgraph, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_islower
+ASP_LIB_API AspRunResult AspLib_string_islower
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -79,7 +79,7 @@ ASP_LIB_API AspRunResult AspLib_islower
     return is_in_class(engine, str, islower, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isprintable
+ASP_LIB_API AspRunResult AspLib_string_isprintable
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -87,7 +87,7 @@ ASP_LIB_API AspRunResult AspLib_isprintable
     return is_in_class(engine, str, isprint, true, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_ispunct
+ASP_LIB_API AspRunResult AspLib_string_ispunct
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -95,7 +95,7 @@ ASP_LIB_API AspRunResult AspLib_ispunct
     return is_in_class(engine, str, ispunct, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isspace
+ASP_LIB_API AspRunResult AspLib_string_isspace
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -103,7 +103,7 @@ ASP_LIB_API AspRunResult AspLib_isspace
     return is_in_class(engine, str, isspace, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isupper
+ASP_LIB_API AspRunResult AspLib_string_isupper
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -111,7 +111,7 @@ ASP_LIB_API AspRunResult AspLib_isupper
     return is_in_class(engine, str, isupper, false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_isxdigit
+ASP_LIB_API AspRunResult AspLib_string_isxdigit
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -160,7 +160,7 @@ static int is_ascii(int c)
     return (c & 0x7F) == c;
 }
 
-ASP_LIB_API AspRunResult AspLib_lower
+ASP_LIB_API AspRunResult AspLib_string_lower
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)
@@ -168,7 +168,7 @@ ASP_LIB_API AspRunResult AspLib_lower
     return convert(engine, str, tolower, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_upper
+ASP_LIB_API AspRunResult AspLib_string_upper
     (AspEngine *engine,
      AspDataEntry *str,
      AspDataEntry **returnValue)

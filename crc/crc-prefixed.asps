@@ -1,0 +1,30 @@
+#
+# Asp application function specifications - CRC.
+# In this spec, all functions are named with a crc_ prefix.
+#
+
+lib
+
+# CRC functions.
+#
+# spec = crc_make_spec(width, poly, init, refin, refout, xorout)
+# cv = crc_calc(spec, s)
+# session = crc_start(spec)
+# crc_add(spec, session, s)
+# cv = crc_finish(spec, session)
+# - width, poly, init, and xorout are integers, and refin and refout are
+#   Boolean values, all specifying the specific CRC algorithm. See
+#   https://reveng.sourceforge.io/crc-catalogue for details.
+# - cv is an integer CRC value.
+# - spec is a tuple of CRC specification parameters created with crc_make_spec
+#   and then passed to other routines to perform the CRC calculations.
+# - session is a list containing the current state of a CRC calculation.
+#   Create a session with crc_start, call crc_add to calculate the CRC in parts,
+#   and then call crc_finish to get the final CRC value.
+# - s is a string containing data on which to calculate a CRC value.
+def crc_make_spec(width, poly, init, refin, refout, xorout) = \
+    AspLib_crc_make_spec
+def crc_calc(spec, s) = AspLib_crc_calc
+def crc_start(spec) = AspLib_crc_start
+def crc_add(spec, session, s) = AspLib_crc_add
+def crc_finish(spec, session) = AspLib_crc_finish

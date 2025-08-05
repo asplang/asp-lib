@@ -11,24 +11,24 @@ lib
 
 # Return True if all characters in the given string are in the implied
 # classification and the string is not empty, False otherwise.
-def isalnum(str) = AspLib_isalnum
-def isalpha(str) = AspLib_isalpha
-def isblank(str) = AspLib_isblank
-def iscntrl(str) = AspLib_iscntrl
-def isdigit(str) = AspLib_isdigit
-def isgraph(str) = AspLib_isgraph
-def islower(str) = AspLib_islower
-def ispunct(str) = AspLib_ispunct
-def isspace(str) = AspLib_isspace
-def isupper(str) = AspLib_isupper
-def isxdigit(str) = AspLib_isxdigit
+def isalnum(str) = AspLib_string_isalnum
+def isalpha(str) = AspLib_string_isalpha
+def isblank(str) = AspLib_string_isblank
+def iscntrl(str) = AspLib_string_iscntrl
+def isdigit(str) = AspLib_string_isdigit
+def isgraph(str) = AspLib_string_isgraph
+def islower(str) = AspLib_string_islower
+def ispunct(str) = AspLib_string_ispunct
+def isspace(str) = AspLib_string_isspace
+def isupper(str) = AspLib_string_isupper
+def isxdigit(str) = AspLib_string_isxdigit
 
 # Return True if all characters in the given string are in the implied
 # classification or the given string is empty, False otherwise.
-def isascii(str) = AspLib_isascii
-def isprintable(str) = AspLib_isprintable
+def isascii(str) = AspLib_string_isascii
+def isprintable(str) = AspLib_string_isprintable
 
 # Return a copy of the string with all cased characters converted to the
 # implied case.
-def lower(str) = AspLib_lower
-def upper(str) = AspLib_upper
+def lower(str) = AspLib_string_lower
+def upper(str) = AspLib_string_upper

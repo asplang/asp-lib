@@ -61,6 +61,7 @@ if(INSTALL_DEV)
 
         install(FILES
             crc.asps
+            crc-prefixed.asps
             DESTINATION ${CMAKE_INSTALL_PREFIX}/../asp/include/asps
             COMPONENT Development
             )
@@ -69,6 +70,7 @@ if(INSTALL_DEV)
 
         install(FILES
             crc.asps
+            crc-prefixed.asps
             DESTINATION include/asps
             COMPONENT Development
             )

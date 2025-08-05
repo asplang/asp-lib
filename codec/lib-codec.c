@@ -36,7 +36,7 @@ static AspRunResult decode_f64
 static bool be(void);
 static void swap(uint8_t *, uint8_t *);
 
-ASP_LIB_API AspRunResult AspLib_encode_i8
+ASP_LIB_API AspRunResult AspLib_codec_encode_i8
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -56,7 +56,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i8
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_u8
+ASP_LIB_API AspRunResult AspLib_codec_encode_u8
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -76,7 +76,7 @@ ASP_LIB_API AspRunResult AspLib_encode_u8
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_i16be
+ASP_LIB_API AspRunResult AspLib_codec_encode_i16be
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -98,7 +98,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i16be
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_i16le
+ASP_LIB_API AspRunResult AspLib_codec_encode_i16le
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -120,7 +120,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i16le
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_u16be
+ASP_LIB_API AspRunResult AspLib_codec_encode_u16be
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -142,7 +142,7 @@ ASP_LIB_API AspRunResult AspLib_encode_u16be
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_u16le
+ASP_LIB_API AspRunResult AspLib_codec_encode_u16le
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -164,7 +164,7 @@ ASP_LIB_API AspRunResult AspLib_encode_u16le
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_i32be
+ASP_LIB_API AspRunResult AspLib_codec_encode_i32be
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -185,7 +185,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i32be
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_i32le
+ASP_LIB_API AspRunResult AspLib_codec_encode_i32le
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -206,7 +206,7 @@ ASP_LIB_API AspRunResult AspLib_encode_i32le
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_f32be
+ASP_LIB_API AspRunResult AspLib_codec_encode_f32be
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -214,7 +214,7 @@ ASP_LIB_API AspRunResult AspLib_encode_f32be
     return encode_f32(engine, x, !be(), returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_f32le
+ASP_LIB_API AspRunResult AspLib_codec_encode_f32le
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -244,7 +244,7 @@ static AspRunResult encode_f32
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_f64be
+ASP_LIB_API AspRunResult AspLib_codec_encode_f64be
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -252,7 +252,7 @@ ASP_LIB_API AspRunResult AspLib_encode_f64be
     return encode_f64(engine, x, !be(), returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_f64le
+ASP_LIB_API AspRunResult AspLib_codec_encode_f64le
     (AspEngine *engine,
      AspDataEntry *x,
      AspDataEntry **returnValue)
@@ -283,7 +283,7 @@ static AspRunResult encode_f64
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_encode_str
+ASP_LIB_API AspRunResult AspLib_codec_encode_str
     (AspEngine *engine,
      AspDataEntry *s, AspDataEntry *len, AspDataEntry *fill,
      AspDataEntry **returnValue)
@@ -329,7 +329,7 @@ ASP_LIB_API AspRunResult AspLib_encode_str
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_i8
+ASP_LIB_API AspRunResult AspLib_codec_decode_i8
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -337,7 +337,7 @@ ASP_LIB_API AspRunResult AspLib_decode_i8
     return decode_i8(engine, s, true, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_u8
+ASP_LIB_API AspRunResult AspLib_codec_decode_u8
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -380,7 +380,7 @@ static AspRunResult decode_i8
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_i16be
+ASP_LIB_API AspRunResult AspLib_codec_decode_i16be
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -388,7 +388,7 @@ ASP_LIB_API AspRunResult AspLib_decode_i16be
     return decode_i16(engine, s, !be(), true, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_i16le
+ASP_LIB_API AspRunResult AspLib_codec_decode_i16le
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -396,7 +396,7 @@ ASP_LIB_API AspRunResult AspLib_decode_i16le
     return decode_i16(engine, s, be(), true, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_u16be
+ASP_LIB_API AspRunResult AspLib_codec_decode_u16be
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -404,7 +404,7 @@ ASP_LIB_API AspRunResult AspLib_decode_u16be
     return decode_i16(engine, s, !be(), false, returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_u16le
+ASP_LIB_API AspRunResult AspLib_codec_decode_u16le
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -449,7 +449,7 @@ static AspRunResult decode_i16
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_i32be
+ASP_LIB_API AspRunResult AspLib_codec_decode_i32be
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -457,7 +457,7 @@ ASP_LIB_API AspRunResult AspLib_decode_i32be
     return decode_i32(engine, s, !be(), returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_i32le
+ASP_LIB_API AspRunResult AspLib_codec_decode_i32le
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -498,7 +498,7 @@ static AspRunResult decode_i32
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_f32be
+ASP_LIB_API AspRunResult AspLib_codec_decode_f32be
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -506,7 +506,7 @@ ASP_LIB_API AspRunResult AspLib_decode_f32be
     return decode_f32(engine, s, !be(), returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_f32le
+ASP_LIB_API AspRunResult AspLib_codec_decode_f32le
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -547,7 +547,7 @@ static AspRunResult decode_f32
     return AspRunResult_OK;
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_f64be
+ASP_LIB_API AspRunResult AspLib_codec_decode_f64be
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -555,7 +555,7 @@ ASP_LIB_API AspRunResult AspLib_decode_f64be
     return decode_f64(engine, s, !be(), returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_f64le
+ASP_LIB_API AspRunResult AspLib_codec_decode_f64le
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
@@ -563,7 +563,7 @@ ASP_LIB_API AspRunResult AspLib_decode_f64le
     return decode_f64(engine, s, be(), returnValue);
 }
 
-ASP_LIB_API AspRunResult AspLib_decode_str
+ASP_LIB_API AspRunResult AspLib_codec_decode_str
     (AspEngine *engine,
      AspDataEntry *s,
      AspDataEntry **returnValue)
