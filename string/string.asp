@@ -166,16 +166,17 @@ def removesuffix(str, suffix):
 def replace(str, old, new, count = -1):
     assert \
         type(str) == type('') and \
-        type(old) == type('') and type(new) == type('')
+        type(old) == type('') and type(new) == type('') and \
+        type(count) == type(0)
     result = ''
-    i = 0
-    while count < 0 or i < count:
+    while count != 0:
         pos = find(str, old)
         if pos < 0:
             break
         result += str[..pos] + new
         str = str[pos + len(old) ..]
-        i += 1
+        if count > 0:
+            count -= 1
     return result + str
 
 def rfind(str, sub):
