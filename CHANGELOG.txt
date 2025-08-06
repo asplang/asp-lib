@@ -7,6 +7,12 @@ chronological order.
 Changes
 -------
 
+Version 0.5.0.1: (string -> 0.1.1.1)
+- Fixed a bug in the string.find function that caused it to index beyond the
+  end of the string being searched.
+- Added a count parameter to the string.replace function to duplicate the
+  behaviour of the equivalent Python string method.
+
 Version 0.5.0.0: (codec -> 0.2.2.0, crc -> 0.2.0.0, string -> 0.1.1.0)
 - codec and string libraries:
   - Added a prefixes to the C implementation function names to ensure they are
