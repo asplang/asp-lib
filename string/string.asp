@@ -87,7 +87,7 @@ def find(str, sub):
     sub_len = len(sub)
     if sub_len > str_len:
         return -1
-    for i in ..str_len:
+    for i in .. str_len - sub_len + 1:
         match = True
         for j in ..sub_len:
             if str[i + j] != sub[j]:
@@ -163,18 +163,20 @@ def removeprefix(str, prefix):
 def removesuffix(str, suffix):
     return str[.. -len(suffix)] if endswith(str, suffix) else str
 
-def replace(str, old, new):
+def replace(str, old, new, count = -1):
     assert \
         type(str) == type('') and \
         type(old) == type('') and type(new) == type('')
     result = ''
-    while True:
+    i = 0
+    while count < 0 or i < count:
         pos = find(str, old)
         if pos < 0:
-            result += str
-            return result
+            break
         result += str[..pos] + new
         str = str[pos + len(old) ..]
+        i += 1
+    return result + str
 
 def rfind(str, sub):
     assert type(str) == type('') and type(sub) == type('')
