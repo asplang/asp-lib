@@ -1,0 +1,29 @@
+abcde.xyz
+Starts with ''? True
+Prefix '' removed: 'abcde.xyz'
+Starts with 'a'? True
+Prefix 'a' removed: 'bcde.xyz'
+Starts with 'aa'? False
+Prefix 'aa' removed: 'abcde.xyz'
+Starts with 'abc'? True
+Prefix 'abc' removed: 'de.xyz'
+Starts with 'abcde.xyz'? True
+Prefix 'abcde.xyz' removed: ''
+Starts with 'abcde.xyz '? False
+Prefix 'abcde.xyz ' removed: 'abcde.xyz'
+---
+Ends with ''? True
+Suffix '' removed: ''
+Ends with 'z'? True
+Suffix 'z' removed: 'abcde.xy'
+Ends with 'xz'? False
+Suffix 'xz' removed: 'abcde.xyz'
+Ends with '.xyz'? True
+Suffix '.xyz' removed: 'abcde'
+Ends with 'abcde.xyz'? True
+Suffix 'abcde.xyz' removed: ''
+Ends with 'abcde.xyz '? False
+Suffix 'abcde.xyz ' removed: 'abcde.xyz'
+---
+'' starts with ''? True
+'' ends with ''? True

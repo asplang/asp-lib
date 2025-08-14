@@ -1,0 +1,88 @@
+Splitting '' into lines
+keepends=False ends=None []
+keepends=False ends='\r' []
+keepends=False ends='\n' []
+keepends=True ends=None []
+keepends=True ends='\r' []
+keepends=True ends='\n' []
+---
+Splitting '\r' into lines
+keepends=False ends=None ['']
+keepends=False ends='\r' ['']
+keepends=False ends='\n' ['\r']
+keepends=True ends=None ['\r']
+keepends=True ends='\r' ['\r']
+keepends=True ends='\n' ['\r']
+---
+Splitting '\r\n' into lines
+keepends=False ends=None ['']
+keepends=False ends='\r' ['', '\n']
+keepends=False ends='\n' ['\r']
+keepends=True ends=None ['\r\n']
+keepends=True ends='\r' ['\r', '\n']
+keepends=True ends='\n' ['\r\n']
+---
+Splitting '\n' into lines
+keepends=False ends=None ['']
+keepends=False ends='\r' ['\n']
+keepends=False ends='\n' ['']
+keepends=True ends=None ['\n']
+keepends=True ends='\r' ['\n']
+keepends=True ends='\n' ['\n']
+---
+Splitting '\n\r' into lines
+keepends=False ends=None ['', '']
+keepends=False ends='\r' ['\n']
+keepends=False ends='\n' ['', '\r']
+keepends=True ends=None ['\n', '\r']
+keepends=True ends='\r' ['\n\r']
+keepends=True ends='\n' ['\n', '\r']
+---
+Splitting '123\nabc\rxyzzy\r\n3.14\n\rzzz' into lines
+keepends=False ends=None ['123', 'abc', 'xyzzy', '3.14', '', 'zzz']
+keepends=False ends='\r' ['123\nabc', 'xyzzy', '\n3.14\n', 'zzz']
+keepends=False ends='\n' ['123', 'abc\rxyzzy\r', '3.14', '\rzzz']
+keepends=True ends=None ['123\n', 'abc\r', 'xyzzy\r\n', '3.14\n', '\r', 'zzz']
+keepends=True ends='\r' ['123\nabc\r', 'xyzzy\r', '\n3.14\n\r', 'zzz']
+keepends=True ends='\n' ['123\n', 'abc\rxyzzy\r\n', '3.14\n', '\rzzz']
+---
+Splitting 'pqr\vstu\fvw\x1c\x1d\x1ezyx\x85zz' into lines
+keepends=False ends=None ['pqr', 'stu', 'vw', '', '', 'zyx', 'zz']
+keepends=False ends='\r' ['pqr\vstu\fvw\x1c\x1d\x1ezyx\x85zz']
+keepends=False ends='\n' ['pqr\vstu\fvw\x1c\x1d\x1ezyx\x85zz']
+keepends=True ends=None ['pqr\v', 'stu\f', 'vw\x1c', '\x1d', '\x1e', 'zyx\x85', 'zz']
+keepends=True ends='\r' ['pqr\vstu\fvw\x1c\x1d\x1ezyx\x85zz']
+keepends=True ends='\n' ['pqr\vstu\fvw\x1c\x1d\x1ezyx\x85zz']
+---
+Splitting 'abc\rdef\r' into lines
+keepends=False ends=None ['abc', 'def']
+keepends=False ends='\r' ['abc', 'def']
+keepends=False ends='\n' ['abc\rdef\r']
+keepends=True ends=None ['abc\r', 'def\r']
+keepends=True ends='\r' ['abc\r', 'def\r']
+keepends=True ends='\n' ['abc\rdef\r']
+---
+Splitting 'abc\r\ndef\r\n' into lines
+keepends=False ends=None ['abc', 'def']
+keepends=False ends='\r' ['abc', '\ndef', '\n']
+keepends=False ends='\n' ['abc\r', 'def\r']
+keepends=True ends=None ['abc\r\n', 'def\r\n']
+keepends=True ends='\r' ['abc\r', '\ndef\r', '\n']
+keepends=True ends='\n' ['abc\r\n', 'def\r\n']
+---
+Splitting 'abc\n\r' into lines
+keepends=False ends=None ['abc', '']
+keepends=False ends='\r' ['abc\n']
+keepends=False ends='\n' ['abc', '\r']
+keepends=True ends=None ['abc\n', '\r']
+keepends=True ends='\r' ['abc\n\r']
+keepends=True ends='\n' ['abc\n', '\r']
+---
+Splitting 'abc\r\n\r' into lines
+keepends=False ends=None ['abc', '']
+keepends=False ends='\r' ['abc', '\n']
+keepends=False ends='\n' ['abc\r', '\r']
+keepends=True ends=None ['abc\r\n', '\r']
+keepends=True ends='\r' ['abc\r', '\n\r']
+keepends=True ends='\n' ['abc\r\n', '\r']
+---

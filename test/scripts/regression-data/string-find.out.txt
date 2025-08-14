@@ -1,0 +1,42 @@
+s = ''
+find('x') = -1
+rfind('x') = -1
+find('xx') = -1
+rfind('xx') = -1
+---
+s = 'a'
+find('x') = -1
+rfind('x') = -1
+find('xx') = -1
+rfind('xx') = -1
+---
+s = 'xx'
+find('x') = 0
+rfind('x') = 1
+find('xx') = 0
+rfind('xx') = 0
+---
+s = 'abc'
+find('x') = -1
+rfind('x') = -1
+find('xx') = -1
+rfind('xx') = -1
+---
+s = 'axc'
+find('x') = 1
+rfind('x') = 1
+find('xx') = -1
+rfind('xx') = -1
+---
+s = 'axbcdxxe'
+find('x') = 1
+rfind('x') = 6
+find('xx') = 5
+rfind('xx') = 5
+---
+s = ' xx abc xx '
+find('x') = 1
+rfind('x') = 9
+find('xx') = 1
+rfind('xx') = 8
+---

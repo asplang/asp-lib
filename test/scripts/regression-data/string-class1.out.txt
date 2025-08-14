@@ -1,0 +1,279 @@
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+ \0  False False False  True False False False False False False  False
+\x01 False False False  True False False False False False False  False
+\x02 False False False  True False False False False False False  False
+\x03 False False False  True False False False False False False  False
+\x04 False False False  True False False False False False False  False
+\x05 False False False  True False False False False False False  False
+\x06 False False False  True False False False False False False  False
+ \a  False False False  True False False False False False False  False
+ \b  False False False  True False False False False False False  False
+ \t  False False  True  True False False False False  True False  False
+ \n  False False False  True False False False False  True False  False
+ \v  False False False  True False False False False  True False  False
+ \f  False False False  True False False False False  True False  False
+ \r  False False False  True False False False False  True False  False
+\x0e False False False  True False False False False False False  False
+\x0f False False False  True False False False False False False  False
+\x10 False False False  True False False False False False False  False
+\x11 False False False  True False False False False False False  False
+\x12 False False False  True False False False False False False  False
+\x13 False False False  True False False False False False False  False
+\x14 False False False  True False False False False False False  False
+\x15 False False False  True False False False False False False  False
+\x16 False False False  True False False False False False False  False
+\x17 False False False  True False False False False False False  False
+\x18 False False False  True False False False False False False  False
+\x19 False False False  True False False False False False False  False
+\x1a False False False  True False False False False False False  False
+\x1b False False False  True False False False False False False  False
+\x1c False False False  True False False False False False False  False
+\x1d False False False  True False False False False False False  False
+\x1e False False False  True False False False False False False  False
+\x1f False False False  True False False False False False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     False False  True False False False False False  True False  False
+  !  False False False False False  True False  True False False  False
+  "  False False False False False  True False  True False False  False
+  #  False False False False False  True False  True False False  False
+  $  False False False False False  True False  True False False  False
+  %  False False False False False  True False  True False False  False
+  &  False False False False False  True False  True False False  False
+  '  False False False False False  True False  True False False  False
+  (  False False False False False  True False  True False False  False
+  )  False False False False False  True False  True False False  False
+  *  False False False False False  True False  True False False  False
+  +  False False False False False  True False  True False False  False
+  ,  False False False False False  True False  True False False  False
+  -  False False False False False  True False  True False False  False
+  .  False False False False False  True False  True False False  False
+  /  False False False False False  True False  True False False  False
+  0   True False False False  True  True False False False False  True 
+  1   True False False False  True  True False False False False  True 
+  2   True False False False  True  True False False False False  True 
+  3   True False False False  True  True False False False False  True 
+  4   True False False False  True  True False False False False  True 
+  5   True False False False  True  True False False False False  True 
+  6   True False False False  True  True False False False False  True 
+  7   True False False False  True  True False False False False  True 
+  8   True False False False  True  True False False False False  True 
+  9   True False False False  True  True False False False False  True 
+  :  False False False False False  True False  True False False  False
+  ;  False False False False False  True False  True False False  False
+  <  False False False False False  True False  True False False  False
+  =  False False False False False  True False  True False False  False
+  >  False False False False False  True False  True False False  False
+  ?  False False False False False  True False  True False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+  @  False False False False False  True False  True False False  False
+  A   True  True False False False  True False False False  True  True 
+  B   True  True False False False  True False False False  True  True 
+  C   True  True False False False  True False False False  True  True 
+  D   True  True False False False  True False False False  True  True 
+  E   True  True False False False  True False False False  True  True 
+  F   True  True False False False  True False False False  True  True 
+  G   True  True False False False  True False False False  True  False
+  H   True  True False False False  True False False False  True  False
+  I   True  True False False False  True False False False  True  False
+  J   True  True False False False  True False False False  True  False
+  K   True  True False False False  True False False False  True  False
+  L   True  True False False False  True False False False  True  False
+  M   True  True False False False  True False False False  True  False
+  N   True  True False False False  True False False False  True  False
+  O   True  True False False False  True False False False  True  False
+  P   True  True False False False  True False False False  True  False
+  Q   True  True False False False  True False False False  True  False
+  R   True  True False False False  True False False False  True  False
+  S   True  True False False False  True False False False  True  False
+  T   True  True False False False  True False False False  True  False
+  U   True  True False False False  True False False False  True  False
+  V   True  True False False False  True False False False  True  False
+  W   True  True False False False  True False False False  True  False
+  X   True  True False False False  True False False False  True  False
+  Y   True  True False False False  True False False False  True  False
+  Z   True  True False False False  True False False False  True  False
+  [  False False False False False  True False  True False False  False
+  \  False False False False False  True False  True False False  False
+  ]  False False False False False  True False  True False False  False
+  ^  False False False False False  True False  True False False  False
+  _  False False False False False  True False  True False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+  `  False False False False False  True False  True False False  False
+  a   True  True False False False  True  True False False False  True 
+  b   True  True False False False  True  True False False False  True 
+  c   True  True False False False  True  True False False False  True 
+  d   True  True False False False  True  True False False False  True 
+  e   True  True False False False  True  True False False False  True 
+  f   True  True False False False  True  True False False False  True 
+  g   True  True False False False  True  True False False False  False
+  h   True  True False False False  True  True False False False  False
+  i   True  True False False False  True  True False False False  False
+  j   True  True False False False  True  True False False False  False
+  k   True  True False False False  True  True False False False  False
+  l   True  True False False False  True  True False False False  False
+  m   True  True False False False  True  True False False False  False
+  n   True  True False False False  True  True False False False  False
+  o   True  True False False False  True  True False False False  False
+  p   True  True False False False  True  True False False False  False
+  q   True  True False False False  True  True False False False  False
+  r   True  True False False False  True  True False False False  False
+  s   True  True False False False  True  True False False False  False
+  t   True  True False False False  True  True False False False  False
+  u   True  True False False False  True  True False False False  False
+  v   True  True False False False  True  True False False False  False
+  w   True  True False False False  True  True False False False  False
+  x   True  True False False False  True  True False False False  False
+  y   True  True False False False  True  True False False False  False
+  z   True  True False False False  True  True False False False  False
+  {  False False False False False  True False  True False False  False
+  |  False False False False False  True False  True False False  False
+  }  False False False False False  True False  True False False  False
+  ~  False False False False False  True False  True False False  False
+\x7f False False False  True False False False False False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+\x80 False False False False False False False False False False  False
+\x81 False False False False False False False False False False  False
+\x82 False False False False False False False False False False  False
+\x83 False False False False False False False False False False  False
+\x84 False False False False False False False False False False  False
+\x85 False False False False False False False False False False  False
+\x86 False False False False False False False False False False  False
+\x87 False False False False False False False False False False  False
+\x88 False False False False False False False False False False  False
+\x89 False False False False False False False False False False  False
+\x8a False False False False False False False False False False  False
+\x8b False False False False False False False False False False  False
+\x8c False False False False False False False False False False  False
+\x8d False False False False False False False False False False  False
+\x8e False False False False False False False False False False  False
+\x8f False False False False False False False False False False  False
+\x90 False False False False False False False False False False  False
+\x91 False False False False False False False False False False  False
+\x92 False False False False False False False False False False  False
+\x93 False False False False False False False False False False  False
+\x94 False False False False False False False False False False  False
+\x95 False False False False False False False False False False  False
+\x96 False False False False False False False False False False  False
+\x97 False False False False False False False False False False  False
+\x98 False False False False False False False False False False  False
+\x99 False False False False False False False False False False  False
+\x9a False False False False False False False False False False  False
+\x9b False False False False False False False False False False  False
+\x9c False False False False False False False False False False  False
+\x9d False False False False False False False False False False  False
+\x9e False False False False False False False False False False  False
+\x9f False False False False False False False False False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+\xa0 False False False False False False False False False False  False
+\xa1 False False False False False False False False False False  False
+\xa2 False False False False False False False False False False  False
+\xa3 False False False False False False False False False False  False
+\xa4 False False False False False False False False False False  False
+\xa5 False False False False False False False False False False  False
+\xa6 False False False False False False False False False False  False
+\xa7 False False False False False False False False False False  False
+\xa8 False False False False False False False False False False  False
+\xa9 False False False False False False False False False False  False
+\xaa False False False False False False False False False False  False
+\xab False False False False False False False False False False  False
+\xac False False False False False False False False False False  False
+\xad False False False False False False False False False False  False
+\xae False False False False False False False False False False  False
+\xaf False False False False False False False False False False  False
+\xb0 False False False False False False False False False False  False
+\xb1 False False False False False False False False False False  False
+\xb2 False False False False False False False False False False  False
+\xb3 False False False False False False False False False False  False
+\xb4 False False False False False False False False False False  False
+\xb5 False False False False False False False False False False  False
+\xb6 False False False False False False False False False False  False
+\xb7 False False False False False False False False False False  False
+\xb8 False False False False False False False False False False  False
+\xb9 False False False False False False False False False False  False
+\xba False False False False False False False False False False  False
+\xbb False False False False False False False False False False  False
+\xbc False False False False False False False False False False  False
+\xbd False False False False False False False False False False  False
+\xbe False False False False False False False False False False  False
+\xbf False False False False False False False False False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+\xc0 False False False False False False False False False False  False
+\xc1 False False False False False False False False False False  False
+\xc2 False False False False False False False False False False  False
+\xc3 False False False False False False False False False False  False
+\xc4 False False False False False False False False False False  False
+\xc5 False False False False False False False False False False  False
+\xc6 False False False False False False False False False False  False
+\xc7 False False False False False False False False False False  False
+\xc8 False False False False False False False False False False  False
+\xc9 False False False False False False False False False False  False
+\xca False False False False False False False False False False  False
+\xcb False False False False False False False False False False  False
+\xcc False False False False False False False False False False  False
+\xcd False False False False False False False False False False  False
+\xce False False False False False False False False False False  False
+\xcf False False False False False False False False False False  False
+\xd0 False False False False False False False False False False  False
+\xd1 False False False False False False False False False False  False
+\xd2 False False False False False False False False False False  False
+\xd3 False False False False False False False False False False  False
+\xd4 False False False False False False False False False False  False
+\xd5 False False False False False False False False False False  False
+\xd6 False False False False False False False False False False  False
+\xd7 False False False False False False False False False False  False
+\xd8 False False False False False False False False False False  False
+\xd9 False False False False False False False False False False  False
+\xda False False False False False False False False False False  False
+\xdb False False False False False False False False False False  False
+\xdc False False False False False False False False False False  False
+\xdd False False False False False False False False False False  False
+\xde False False False False False False False False False False  False
+\xdf False False False False False False False False False False  False
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+     alnum alpha blank cntrl digit graph lower punct space upper xdigit
+     ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ------
+\xe0 False False False False False False False False False False  False
+\xe1 False False False False False False False False False False  False
+\xe2 False False False False False False False False False False  False
+\xe3 False False False False False False False False False False  False
+\xe4 False False False False False False False False False False  False
+\xe5 False False False False False False False False False False  False
+\xe6 False False False False False False False False False False  False
+\xe7 False False False False False False False False False False  False
+\xe8 False False False False False False False False False False  False
+\xe9 False False False False False False False False False False  False
+\xea False False False False False False False False False False  False
+\xeb False False False False False False False False False False  False
+\xec False False False False False False False False False False  False
+\xed False False False False False False False False False False  False
+\xee False False False False False False False False False False  False
+\xef False False False False False False False False False False  False
+\xf0 False False False False False False False False False False  False
+\xf1 False False False False False False False False False False  False
+\xf2 False False False False False False False False False False  False
+\xf3 False False False False False False False False False False  False
+\xf4 False False False False False False False False False False  False
+\xf5 False False False False False False False False False False  False
+\xf6 False False False False False False False False False False  False
+\xf7 False False False False False False False False False False  False
+\xf8 False False False False False False False False False False  False
+\xf9 False False False False False False False False False False  False
+\xfa False False False False False False False False False False  False
+\xfb False False False False False False False False False False  False
+\xfc False False False False False False False False False False  False
+\xfd False False False False False False False False False False  False
+\xfe False False False False False False False False False False  False
+\xff False False False False False False False False False False  False

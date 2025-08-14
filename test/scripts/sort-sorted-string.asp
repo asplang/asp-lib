@@ -14,7 +14,7 @@ print(sort.sorted(s, compare))
 print('---')
 
 s = 'the quick brown fox jumps over the lazy dog'
-print(s)
+print('%r' % (s,))
 print('%r' % (string.join(sort.sorted(s, compare)),))
 
 del compare, s

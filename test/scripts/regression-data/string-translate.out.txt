@@ -1,0 +1,14 @@
+Original: the quick brown fox jumps over the lazy dog
+---
+Table: {'a': '1', 'b': '2', 'c': '3', 'z': None}
+Result: the qui3k 2rown fox jumps over the l1y dog
+---
+Table: {'a': 'A', 'b': 'B', 'c': 'C', 'd': 'D', 'e': 'E', 'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l': 'L', 'm': 'M'}
+Result: tHE quICK Brown Fox JuMps ovEr tHE LAzy DoG
+---
+Table: {'a': 'A', 'b': 'B', 'c': 'C', 'd': 'D', 'e': 'E', 'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l': 'L', 'm': 'M', 'n': None, 'o': None, 'p': None, 'q': None, 'r': None, 's': None, 't': None, 'u': None, 'v': None, 'w': None, 'x': None, 'y': None, 'z': None}
+Result: HE ICK B F JM E HE LA DG
+---
+Table: {' ': None}
+Result: thequickbrownfoxjumpsoverthelazydog
+---

@@ -1,0 +1,120 @@
+s = ''
+ljust(0)  = ''
+rjust(0)  = ''
+center(0) = ''
+---
+s = 'x'
+ljust(0)  = 'x'
+rjust(0)  = 'x'
+center(0) = 'x'
+---
+s = 'xy'
+ljust(0)  = 'xy'
+rjust(0)  = 'xy'
+center(0) = 'xy'
+---
+s = 'xyz'
+ljust(0)  = 'xyz'
+rjust(0)  = 'xyz'
+center(0) = 'xyz'
+---
+s = 'xyzzy'
+ljust(0)  = 'xyzzy'
+rjust(0)  = 'xyzzy'
+center(0) = 'xyzzy'
+---
+s = 'xyzzy1'
+ljust(0)  = 'xyzzy1'
+rjust(0)  = 'xyzzy1'
+center(0) = 'xyzzy1'
+---
+s = ''
+ljust(3)  = '   '
+rjust(3)  = '   '
+center(3) = '   '
+---
+s = 'x'
+ljust(3)  = 'x  '
+rjust(3)  = '  x'
+center(3) = ' x '
+---
+s = 'xy'
+ljust(3)  = 'xy '
+rjust(3)  = ' xy'
+center(3) = ' xy'
+---
+s = 'xyz'
+ljust(3)  = 'xyz'
+rjust(3)  = 'xyz'
+center(3) = 'xyz'
+---
+s = 'xyzzy'
+ljust(3)  = 'xyzzy'
+rjust(3)  = 'xyzzy'
+center(3) = 'xyzzy'
+---
+s = 'xyzzy1'
+ljust(3)  = 'xyzzy1'
+rjust(3)  = 'xyzzy1'
+center(3) = 'xyzzy1'
+---
+s = ''
+ljust(4)  = '    '
+rjust(4)  = '    '
+center(4) = '    '
+---
+s = 'x'
+ljust(4)  = 'x   '
+rjust(4)  = '   x'
+center(4) = '  x '
+---
+s = 'xy'
+ljust(4)  = 'xy  '
+rjust(4)  = '  xy'
+center(4) = ' xy '
+---
+s = 'xyz'
+ljust(4)  = 'xyz '
+rjust(4)  = ' xyz'
+center(4) = ' xyz'
+---
+s = 'xyzzy'
+ljust(4)  = 'xyzzy'
+rjust(4)  = 'xyzzy'
+center(4) = 'xyzzy'
+---
+s = 'xyzzy1'
+ljust(4)  = 'xyzzy1'
+rjust(4)  = 'xyzzy1'
+center(4) = 'xyzzy1'
+---
+s = ''
+ljust(5)  = '     '
+rjust(5)  = '     '
+center(5) = '     '
+---
+s = 'x'
+ljust(5)  = 'x    '
+rjust(5)  = '    x'
+center(5) = '  x  '
+---
+s = 'xy'
+ljust(5)  = 'xy   '
+rjust(5)  = '   xy'
+center(5) = '  xy '
+---
+s = 'xyz'
+ljust(5)  = 'xyz  '
+rjust(5)  = '  xyz'
+center(5) = ' xyz '
+---
+s = 'xyzzy'
+ljust(5)  = 'xyzzy'
+rjust(5)  = 'xyzzy'
+center(5) = 'xyzzy'
+---
+s = 'xyzzy1'
+ljust(5)  = 'xyzzy1'
+rjust(5)  = 'xyzzy1'
+center(5) = 'xyzzy1'
+---

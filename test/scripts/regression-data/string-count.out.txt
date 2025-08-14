@@ -1,0 +1,28 @@
+s = ''
+count('x') = 0
+count('xx') = 0
+---
+s = 'a'
+count('x') = 0
+count('xx') = 0
+---
+s = 'axc'
+count('x') = 1
+count('xx') = 0
+---
+s = 'axbcdxxe'
+count('x') = 3
+count('xx') = 1
+---
+s = ' xx abc xx '
+count('x') = 4
+count('xx') = 2
+---
+s = 'xxxxxx'
+count('x') = 6
+count('xx') = 3
+---
+s = 'xxxxxxx'
+count('x') = 7
+count('xx') = 3
+---

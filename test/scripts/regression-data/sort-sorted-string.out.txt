@@ -1,0 +1,6 @@
+zrpqba
+['z', 'r', 'p', 'q', 'b', 'a']
+['a', 'b', 'p', 'q', 'r', 'z']
+---
+'the quick brown fox jumps over the lazy dog'
+'        abcdeeefghhijklmnoooopqrrsttuuvwxyz'

@@ -1,0 +1,10 @@
+axbxxcxxxdefxxxxgx
+axbXcXxdefXXgx
+-1 axbXcXxdefXXgx
+0 axbxxcxxxdefxxxxgx
+1 axbXcxxxdefxxxxgx
+2 axbXcXxdefxxxxgx
+3 axbXcXxdefXxxgx
+4 axbXcXxdefXXgx
+5 axbXcXxdefXXgx
+axbxxcxxxdefxxxxgx

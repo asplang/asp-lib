@@ -1,0 +1,12 @@
+s = ''
+lower(s) = ''
+upper(s) = ''
+---
+s = 'AbCd12_xX'
+lower(s) = 'abcd12_xx'
+upper(s) = 'ABCD12_XX'
+---
+s = '123'
+lower(s) = '123'
+upper(s) = '123'
+---

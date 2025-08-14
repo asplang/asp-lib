@@ -1,0 +1,64 @@
+'' isalpha? False
+'' isalnum? False
+'' isascii? True
+'' isblank? False
+'' isdigit? False
+'' isprintable? True
+'' isspace? False
+---
+'aa' isalpha? True
+'aa' isalnum? True
+'aa' isascii? True
+'aa' isblank? False
+'aa' isdigit? False
+'aa' isprintable? True
+'aa' isspace? False
+---
+'a 2' isalpha? False
+'a 2' isalnum? False
+'a 2' isascii? True
+'a 2' isblank? False
+'a 2' isdigit? False
+'a 2' isprintable? True
+'a 2' isspace? False
+---
+'aa2' isalpha? False
+'aa2' isalnum? True
+'aa2' isascii? True
+'aa2' isblank? False
+'aa2' isdigit? False
+'aa2' isprintable? True
+'aa2' isspace? False
+---
+'234' isalpha? False
+'234' isalnum? True
+'234' isascii? True
+'234' isblank? False
+'234' isdigit? True
+'234' isprintable? True
+'234' isspace? False
+---
+' \t' isalpha? False
+' \t' isalnum? False
+' \t' isascii? True
+' \t' isblank? True
+' \t' isdigit? False
+' \t' isprintable? False
+' \t' isspace? True
+---
+'\t \f' isalpha? False
+'\t \f' isalnum? False
+'\t \f' isascii? True
+'\t \f' isblank? False
+'\t \f' isdigit? False
+'\t \f' isprintable? False
+'\t \f' isspace? True
+---
+'\x80' isalpha? False
+'\x80' isalnum? False
+'\x80' isascii? False
+'\x80' isblank? False
+'\x80' isdigit? False
+'\x80' isprintable? False
+'\x80' isspace? False
+---

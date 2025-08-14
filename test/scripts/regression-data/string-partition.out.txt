@@ -1,0 +1,36 @@
+s = ''
+partition('x') = ('', '', '')
+rpartition('x') = ('', '', '')
+partition('xx') = ('', '', '')
+rpartition('xx') = ('', '', '')
+---
+s = 'a'
+partition('x') = ('a', '', '')
+rpartition('x') = ('', '', 'a')
+partition('xx') = ('a', '', '')
+rpartition('xx') = ('', '', 'a')
+---
+s = 'axc'
+partition('x') = ('a', 'x', 'c')
+rpartition('x') = ('a', 'x', 'c')
+partition('xx') = ('axc', '', '')
+rpartition('xx') = ('', '', 'axc')
+---
+s = 'axbcdxxe'
+partition('x') = ('a', 'x', 'bcdxxe')
+rpartition('x') = ('axbcdx', 'x', 'e')
+partition('xx') = ('axbcd', 'xx', 'e')
+rpartition('xx') = ('axbcd', 'xx', 'e')
+---
+s = ' xx abc xx '
+partition('x') = (' ', 'x', 'x abc xx ')
+rpartition('x') = (' xx abc x', 'x', ' ')
+partition('xx') = (' ', 'xx', ' abc xx ')
+rpartition('xx') = (' xx abc ', 'xx', ' ')
+---
+s = 'xx abc xx'
+partition('x') = ('', 'x', 'x abc xx')
+rpartition('x') = ('xx abc x', 'x', '')
+partition('xx') = ('', 'xx', ' abc xx')
+rpartition('xx') = ('xx abc ', 'xx', '')
+---

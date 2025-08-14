@@ -1,7 +1,7 @@
 import string
 
 s = 'the quick brown fox jumps over the lazy dog'
-print('Original %s' % (s,))
+print('Original: %s' % (s,))
 print('---')
 
 def test(table):
