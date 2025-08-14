@@ -76,7 +76,3 @@ if(INSTALL_DEV)
     endif()
 
 endif()
-
-if(BUILD_TEST_TARGETS)
-    add_subdirectory(test)
-endif()

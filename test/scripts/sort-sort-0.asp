@@ -1,7 +1,11 @@
+# Test of sorting an empty list.
+
+from sort import sort
+
 def compare(a, b):
     return a - b
 
-lst = [13, 42]
+lst = []
 print(lst)
 sort(lst, compare)
 print(lst)

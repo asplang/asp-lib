@@ -1,7 +1,11 @@
+# Test of generating a sorted list from an empty list.
+
+from sort import sorted
+
 def compare(a, b):
     return a - b
 
-lst = [42]
+lst = []
 print(lst)
 print(sorted(lst, compare))
 

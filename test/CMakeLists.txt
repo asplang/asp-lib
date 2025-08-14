@@ -73,3 +73,5 @@ target_link_libraries(test-lib
     asp-string-class
     aspd
     )
+
+add_subdirectory(scripts)

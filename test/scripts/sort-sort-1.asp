@@ -1,3 +1,7 @@
+# Test of sorting a single-element list.
+
+from sort import sort
+
 def compare(a, b):
     return a - b
 

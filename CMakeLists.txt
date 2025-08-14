@@ -84,6 +84,7 @@ add_subdirectory(crc)
 add_subdirectory(sort)
 add_subdirectory(string)
 
+# Test cases.
 if(BUILD_TEST_TARGETS)
     add_subdirectory(test)
 endif()

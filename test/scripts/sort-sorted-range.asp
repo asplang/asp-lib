@@ -1,4 +1,6 @@
-# Test of sort stability.
+# Test of sorting a range.
+
+from sort import sorted
 
 def compare(a, b):
     return a <=> b
